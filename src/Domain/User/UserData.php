@@ -2,12 +2,12 @@
 
 namespace App\Domain\User;
 
-use App\Domain\Model\DomainModelInterface;
+use App\Domain\Data\DataInterface;
 
 /**
- * DTO.
+ * DTO containing User infos.
  */
-final class User implements DomainModelInterface
+final class UserData implements DataInterface
 {
     /** @var int|null */
     private $id;

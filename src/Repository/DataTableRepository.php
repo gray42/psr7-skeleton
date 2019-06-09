@@ -203,9 +203,9 @@ final class DataTableRepository implements RepositoryInterface
      *
      * @param string $table The table name
      *
-     * @return mixed[] The fields
      * @throws RuntimeException
      *
+     * @return mixed[] The fields
      */
     private function getTableFields(string $table): array
     {

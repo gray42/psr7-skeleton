@@ -27,14 +27,14 @@ final class UserService implements DomainServiceInterface
     /**
      * Find all users.
      *
-     * @return User[] Array of users
+     * @return UserData[] Array of users
      */
     public function findAllUsers(): array
     {
         $result = [];
 
         foreach ($this->userRepository->findAll() as $row) {
-            $result[] = User::fromArray($row);
+            $result[] = UserData::fromArray($row);
         }
 
         return $result;
@@ -45,23 +45,23 @@ final class UserService implements DomainServiceInterface
      *
      * @param int $userId The user ID
      *
-     * @return User The data
+     * @return UserData The data
      */
-    public function getUserById(int $userId): User
+    public function getUserById(int $userId): UserData
     {
         $row = $this->userRepository->getUserById($userId);
 
-        return User::fromArray($row);
+        return UserData::fromArray($row);
     }
 
     /**
      * Register new user.
      *
-     * @param User $user The user
+     * @param UserData $user The user
      *
      * @return int New ID
      */
-    public function registerUser(User $user): int
+    public function registerUser(UserData $user): int
     {
         $row = [
             'username' => $user->getUsername(),

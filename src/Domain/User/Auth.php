@@ -80,11 +80,11 @@ final class Auth implements DomainServiceInterface
     /**
      * Retrieves the currently logged in user.
      *
-     * @throws RuntimeException
+     *@throws RuntimeException
      *
-     * @return User The logged-in user
+     * @return UserData The logged-in user
      */
-    public function getUser(): User
+    public function getUser(): UserData
     {
         $user = $this->session->get('user');
 
@@ -101,9 +101,9 @@ final class Auth implements DomainServiceInterface
      * @param string $username The username
      * @param string $password The password
      *
-     * @return User|null The user or null
+     * @return UserData|null The user or null
      */
-    public function authenticate(string $username, string $password): ?User
+    public function authenticate(string $username, string $password): ?UserData
     {
         $userRow = $this->authRepository->findUserByUsername($username);
 
@@ -111,7 +111,7 @@ final class Auth implements DomainServiceInterface
             return null;
         }
 
-        $user = User::fromArray($userRow);
+        $user = UserData::fromArray($userRow);
 
         if (!$this->verifyPassword($password, $user->getPassword() ?: '')) {
             return null;
@@ -138,11 +138,11 @@ final class Auth implements DomainServiceInterface
     /**
      * Init user session.
      *
-     * @param User $user The user
+     * @param UserData $user The user
      *
      * @return void
      */
-    private function startUserSession(User $user): void
+    private function startUserSession(UserData $user): void
     {
         // Clear session data
         $this->session->destroy();
@@ -158,11 +158,11 @@ final class Auth implements DomainServiceInterface
     /**
      * Set the identity into storage or null if no identity is available.
      *
-     * @param User $user The user
+     * @param UserData $user The user
      *
      * @return void
      */
-    private function setIdentity(User $user): void
+    private function setIdentity(UserData $user): void
     {
         $this->session->set('user', $user);
     }
