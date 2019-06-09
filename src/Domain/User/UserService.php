@@ -2,12 +2,12 @@
 
 namespace App\Domain\User;
 
-use App\Domain\Service\DomainServiceInterface;
+use App\Domain\Service\ServiceInterface;
 
 /**
  * Service.
  */
-final class UserService implements DomainServiceInterface
+final class UserService implements ServiceInterface
 {
     /**
      * @var UserRepository

@@ -2,14 +2,14 @@
 
 namespace App\Domain\User;
 
-use App\Domain\Service\DomainServiceInterface;
+use App\Domain\Service\ServiceInterface;
 use Odan\Session\SessionInterface;
 use RuntimeException;
 
 /**
  * Authentication and authorisation.
  */
-final class Auth implements DomainServiceInterface
+final class Auth implements ServiceInterface
 {
     /**
      * @var SessionInterface

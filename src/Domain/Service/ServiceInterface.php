@@ -3,8 +3,8 @@
 namespace App\Domain\Service;
 
 /**
- * Service.
+ * Domain Service.
  */
-interface DomainServiceInterface
+interface ServiceInterface
 {
 }

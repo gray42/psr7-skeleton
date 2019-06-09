@@ -2,14 +2,14 @@
 
 namespace App\Domain\User;
 
-use App\Domain\Service\DomainServiceInterface;
+use App\Domain\Service\ServiceInterface;
 use Odan\Session\SessionInterface;
 use Symfony\Component\Translation\Translator;
 
 /**
  * DTO.
  */
-final class Locale implements DomainServiceInterface
+final class Locale implements ServiceInterface
 {
     /**
      * @var string Locale path
