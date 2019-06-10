@@ -26,7 +26,7 @@ This project comes configured with:
 
 * Modern coding style (PSR-1, PSR-2, PSR-12)
 * PHPDoc Standard (PSR-5, PSR-19)
-* Autoloading (PSR-4)
+* Class Autoloader (PSR-4)
 * HTTP request and response (PSR-7)
 * Middleware (PSR-15)
 * HTTP Factories (PSR-17)
