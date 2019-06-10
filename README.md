@@ -28,21 +28,21 @@ This project comes configured with:
 * PHPDoc Standard (PSR-5, PSR-19)
 * Class Autoloader (PSR-4)
 * HTTP request and response (PSR-7)
-* Middleware (PSR-15)
+* HTTP Server Request Handlers, Middleware (PSR-15)
 * HTTP Factories (PSR-17)
 * Dependency injection container (PSR-11)
 * Routing
-* Single action controllers (ADR)
+* Single action controllers ([ADR](https://github.com/pmjones/adr/blob/master/ADR.md))
 * Logging (PSR-3)
 * Translations
-* Sessions
+* Sessions and Cookies
 * Authentication and Authorization
 * Database Query Builder
 * Database Migrations (Phinx)
 * Database Migrations Generator
 * Date and time (Chronos)
 * Console Commands (Symfony)
-* Unit testing (phpunit)
+* Unit testing (PHPUnit)
 
 **Middleware:**
 
