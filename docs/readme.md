@@ -3,6 +3,7 @@
 ## Table of contents
 
 * [Introduction](#introduction)
+* [Architecture](#architecture)
 * [Installation](#installation)
   * [Manual Setup](#manual-setup)
   * [Vagrant Setup](#vagrant-setup)
@@ -53,6 +54,10 @@ This is a skeleton project that includes Routing, Middleware, Twig templates,
 Translations, Assets, Sessions, Database Queries, Migrations, 
 Console Commands, Authentication, Authorization, CSRF protection, 
 Logging and Unit testing.
+
+## Architecture
+
+![image](https://user-images.githubusercontent.com/781074/59226620-b9053f80-8bd3-11e9-9b79-c75f3667fa5f.png)
 
 ## Installation
 
