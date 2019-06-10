@@ -65,7 +65,6 @@ This project comes configured with:
 * Integration tests (http and database)
 * PHPStan (level=max)
 * Code style checker and fixer (PSR-1, PSR-2, PSR-12)
-* DocBlock checker (PSR-5)
 * Ant scripts
 * Deployment scripts
 
