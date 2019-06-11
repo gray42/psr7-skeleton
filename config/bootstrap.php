@@ -18,9 +18,5 @@ return call_user_func(static function () {
     // Set translator instance
     __($container->get(Translator::class));
 
-    set_error_handler(static function (int $severity, string $message, string $filename, int $lineno) {
-        throw new ErrorException($message, 0, $severity, $filename, $lineno);
-    });
-
     return $container;
 });

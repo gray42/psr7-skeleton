@@ -38,11 +38,17 @@ final class UserRepository implements RepositoryInterface
     /**
      * Find all users.
      *
-     * @return mixed[] Rows
+     * @return UserData[] A list of users
      */
     public function findAll(): array
     {
-        return $this->tableRepository->fetchAll('users');
+        $result = [];
+
+        foreach ($this->tableRepository->fetchAll('users') as $row) {
+            $result[] = UserData::fromArray($row);
+        }
+
+        return $result;
     }
 
     /**
@@ -52,9 +58,9 @@ final class UserRepository implements RepositoryInterface
      *
      * @throws DomainException
      *
-     * @return array The row
+     * @return UserData The user
      */
-    public function getUserById(int $userId): array
+    public function getUserById(int $userId): UserData
     {
         $row = $this->findUserById($userId);
 
@@ -62,7 +68,7 @@ final class UserRepository implements RepositoryInterface
             throw new DomainException(__('User not found: %s', $userId));
         }
 
-        return $row;
+        return UserData::fromArray($row);
     }
 
     /**
@@ -70,11 +76,11 @@ final class UserRepository implements RepositoryInterface
      *
      * @param int $userId The user ID
      *
-     * @return array The row
+     * @return UserData The user
      */
-    public function findUserById(int $userId): array
+    public function findUserById(int $userId): UserData
     {
-        return $this->tableRepository->fetchById('users', $userId);
+        return UserData::fromArray($this->tableRepository->fetchById('users', $userId));
     }
 
     /**

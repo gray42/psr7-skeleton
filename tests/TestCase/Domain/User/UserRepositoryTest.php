@@ -2,6 +2,7 @@
 
 namespace App\Test\TestCase\Domain\User;
 
+use App\Domain\User\UserData;
 use App\Domain\User\UserRepository;
 use App\Test\Fixture\UserFixture;
 use App\Test\TestCase\DbTestCase;
@@ -60,7 +61,7 @@ class UserRepositoryTest extends DbTestCase
         $actual = $repository->findUserById(1);
 
         $fixture = new UserFixture();
-        $expected = $fixture->records[0];
+        $expected = UserData::fromArray($fixture->records[0]);
 
         $this->assertEquals($expected, $actual);
     }

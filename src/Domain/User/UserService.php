@@ -27,17 +27,11 @@ final class UserService implements ServiceInterface
     /**
      * Find all users.
      *
-     * @return UserData[] Array of users
+     * @return UserData[] A list of users
      */
     public function findAllUsers(): array
     {
-        $result = [];
-
-        foreach ($this->userRepository->findAll() as $row) {
-            $result[] = UserData::fromArray($row);
-        }
-
-        return $result;
+        return $this->userRepository->findAll();
     }
 
     /**
@@ -45,13 +39,11 @@ final class UserService implements ServiceInterface
      *
      * @param int $userId The user ID
      *
-     * @return UserData The data
+     * @return UserData The user
      */
     public function getUserById(int $userId): UserData
     {
-        $row = $this->userRepository->getUserById($userId);
-
-        return UserData::fromArray($row);
+        return $this->userRepository->getUserById($userId);
     }
 
     /**
@@ -59,7 +51,7 @@ final class UserService implements ServiceInterface
      *
      * @param UserData $user The user
      *
-     * @return int New ID
+     * @return int The new ID
      */
     public function registerUser(UserData $user): int
     {
