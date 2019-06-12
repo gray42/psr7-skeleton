@@ -63,9 +63,9 @@ final class UserMemoryRepository implements UserRepositoryInterface
      *
      * @param int $userId The user ID
      *
-     * @return UserData The user
+     * @return UserData|null The user
      */
-    public function findUserById(int $userId): UserData
+    public function findUserById(int $userId): ?UserData
     {
         return $this->rows[$userId];
     }

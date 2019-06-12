@@ -13,7 +13,7 @@ interface UserRepositoryInterface extends RepositoryInterface
 
     public function getUserById(int $userId): UserData;
 
-    public function findUserById(int $userId): UserData;
+    public function findUserById(int $userId): ?UserData;
 
     public function updateUser(int $userId, array $data): bool;
 

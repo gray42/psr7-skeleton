@@ -75,11 +75,13 @@ final class UserRepository implements UserRepositoryInterface
      *
      * @param int $userId The user ID
      *
-     * @return UserData The user
+     * @return UserData|null The user
      */
-    public function findUserById(int $userId): UserData
+    public function findUserById(int $userId): ?UserData
     {
-        return UserData::fromArray($this->tableRepository->fetchById('users', $userId));
+        $row = $this->tableRepository->fetchById('users', $userId);
+
+        return $row ? UserData::fromArray($row) : null;
     }
 
     /**
