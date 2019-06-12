@@ -35,9 +35,7 @@ final class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Find all users.
-     *
-     * @return UserData[] A list of users
+     * {@inheritdoc}
      */
     public function findAll(): array
     {
@@ -51,13 +49,7 @@ final class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Get user by id.
-     *
-     * @param int $userId The User ID
-     *
-     * @throws DomainException
-     *
-     * @return UserData The user
+     * {@inheritdoc}
      */
     public function getUserById(int $userId): UserData
     {
@@ -71,11 +63,7 @@ final class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Find by id.
-     *
-     * @param int $userId The user ID
-     *
-     * @return UserData|null The user
+     * {@inheritdoc}
      */
     public function findUserById(int $userId): ?UserData
     {
@@ -106,11 +94,7 @@ final class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Insert new user.
-     *
-     * @param array $data The user
-     *
-     * @return int The new ID
+     * {@inheritdoc}
      */
     public function insertUser(array $data): int
     {
@@ -118,11 +102,7 @@ final class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * Delete user.
-     *
-     * @param int $userId The user ID
-     *
-     * @return bool Success
+     * {@inheritdoc}
      */
     public function deleteUser(int $userId): bool
     {

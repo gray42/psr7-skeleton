@@ -6,7 +6,6 @@ use App\Domain\User\UserData;
 use App\Domain\User\UserRepositoryInterface;
 use App\Test\Fixture\UserFixture;
 use DomainException;
-use InvalidArgumentException;
 
 /**
  * Mock.
@@ -31,9 +30,7 @@ final class UserMemoryRepository implements UserRepositoryInterface
     }
 
     /**
-     * Find all users.
-     *
-     * @return UserData[] A list of users
+     * {@inheritdoc}
      */
     public function findAll(): array
     {
@@ -41,13 +38,7 @@ final class UserMemoryRepository implements UserRepositoryInterface
     }
 
     /**
-     * Get user by id.
-     *
-     * @param int $userId The User ID
-     *
-     * @throws DomainException
-     *
-     * @return UserData The user
+     * {@inheritdoc}
      */
     public function getUserById(int $userId): UserData
     {
@@ -59,11 +50,7 @@ final class UserMemoryRepository implements UserRepositoryInterface
     }
 
     /**
-     * Find by id.
-     *
-     * @param int $userId The user ID
-     *
-     * @return UserData|null The user
+     * {@inheritdoc}
      */
     public function findUserById(int $userId): ?UserData
     {
@@ -71,14 +58,7 @@ final class UserMemoryRepository implements UserRepositoryInterface
     }
 
     /**
-     * Update user.
-     *
-     * @param int $userId The user ID
-     * @param array $data The user data
-     *
-     * @throws InvalidArgumentException
-     *
-     * @return bool Success
+     * {@inheritdoc}
      */
     public function updateUser(int $userId, array $data): bool
     {
@@ -88,11 +68,7 @@ final class UserMemoryRepository implements UserRepositoryInterface
     }
 
     /**
-     * Insert new user.
-     *
-     * @param array $data The user
-     *
-     * @return int The new ID
+     * {@inheritdoc}
      */
     public function insertUser(array $data): int
     {
@@ -103,11 +79,7 @@ final class UserMemoryRepository implements UserRepositoryInterface
     }
 
     /**
-     * Delete user.
-     *
-     * @param int $userId The user ID
-     *
-     * @return bool Success
+     * {@inheritdoc}
      */
     public function deleteUser(int $userId): bool
     {

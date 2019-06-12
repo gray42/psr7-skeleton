@@ -43,7 +43,7 @@ class UserServiceTest extends DbTestCase
     /**
      * Test.
      *
-     * @covers ::findAll
+     * @covers ::findAllUsers
      *
      * @return void
      */
