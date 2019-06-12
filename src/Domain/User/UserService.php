@@ -10,7 +10,7 @@ use App\Domain\Service\ServiceInterface;
 final class UserService implements ServiceInterface
 {
     /**
-     * @var UserRepositoryInterface
+     * @var UserRepositoryInterface|UserRepository
      */
     private $userRepository;
 
