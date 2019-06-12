@@ -3,6 +3,7 @@
 use App\Domain\User\Auth;
 use App\Domain\User\AuthRepository;
 use App\Domain\User\Locale;
+use App\Factory\InterfaceContainer;
 use App\Factory\LoggerFactory;
 use App\Http\RouterUrl;
 use App\Middleware\AuthenticationMiddleware;
@@ -47,6 +48,7 @@ use Twig\Loader\FilesystemLoader;
 $container = new Container();
 
 $container->delegate(new ReflectionContainer());
+$container->delegate(new InterfaceContainer());
 
 // Core
 $container->share(ContainerInterface::class, static function (Container $container) {

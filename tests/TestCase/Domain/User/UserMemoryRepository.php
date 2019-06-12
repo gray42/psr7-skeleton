@@ -1,37 +1,33 @@
 <?php
 
-namespace App\Domain\User;
+namespace App\Test\TestCase\Domain\User;
 
-use App\Repository\QueryFactory;
-use App\Repository\TableRepository;
+use App\Domain\User\UserData;
+use App\Domain\User\UserRepositoryInterface;
+use App\Test\Fixture\UserFixture;
 use DomainException;
 use InvalidArgumentException;
 
 /**
- * Repository.
+ * Mock.
  */
-final class UserRepository implements UserRepositoryInterface
+final class UserMemoryRepository implements UserRepositoryInterface
 {
     /**
-     * @var QueryFactory
+     * @var array
      */
-    private $queryFactory;
-
-    /**
-     * @var TableRepository
-     */
-    private $tableRepository;
+    private $rows = [];
 
     /**
      * Constructor.
-     *
-     * @param QueryFactory $queryFactory The query factory
-     * @param TableRepository $tableRepository The table repository
      */
-    public function __construct(QueryFactory $queryFactory, TableRepository $tableRepository)
+    public function __construct()
     {
-        $this->queryFactory = $queryFactory;
-        $this->tableRepository = $tableRepository;
+        $fixture = new UserFixture();
+
+        foreach ($fixture->records as $row) {
+            $this->rows[$row['id']] = UserData::fromArray($row);
+        }
     }
 
     /**
@@ -41,13 +37,7 @@ final class UserRepository implements UserRepositoryInterface
      */
     public function findAll(): array
     {
-        $result = [];
-
-        foreach ($this->tableRepository->fetchAll('users') as $row) {
-            $result[] = UserData::fromArray($row);
-        }
-
-        return $result;
+        return $this->rows;
     }
 
     /**
@@ -61,13 +51,11 @@ final class UserRepository implements UserRepositoryInterface
      */
     public function getUserById(int $userId): UserData
     {
-        $result = $this->findUserById($userId);
-
-        if (!$result) {
+        if (!isset($this->rows[$userId])) {
             throw new DomainException(__('User not found: %s', $userId));
         }
 
-        return $result;
+        return $this->rows[$userId];
     }
 
     /**
@@ -79,7 +67,7 @@ final class UserRepository implements UserRepositoryInterface
      */
     public function findUserById(int $userId): UserData
     {
-        return UserData::fromArray($this->tableRepository->fetchById('users', $userId));
+        return $this->rows[$userId];
     }
 
     /**
@@ -94,11 +82,7 @@ final class UserRepository implements UserRepositoryInterface
      */
     public function updateUser(int $userId, array $data): bool
     {
-        if (empty($userId)) {
-            throw new InvalidArgumentException('User ID required');
-        }
-
-        $this->queryFactory->newUpdate('users', $data)->andWhere(['id' => $data['id']])->execute();
+        $this->rows[$userId] += $data;
 
         return true;
     }
@@ -112,7 +96,10 @@ final class UserRepository implements UserRepositoryInterface
      */
     public function insertUser(array $data): int
     {
-        return (int)$this->queryFactory->newInsert('users', $data)->execute()->lastInsertId();
+        $data['id'] = (int)count($this->rows);
+        $this->rows[] = UserData::fromArray($data);
+
+        return $data['id'];
     }
 
     /**
@@ -124,7 +111,7 @@ final class UserRepository implements UserRepositoryInterface
      */
     public function deleteUser(int $userId): bool
     {
-        $this->queryFactory->newDelete('users')->andWhere(['id' => $userId])->execute();
+        unset($this->rows[$userId]);
 
         return true;
     }
