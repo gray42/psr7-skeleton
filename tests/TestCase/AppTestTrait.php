@@ -7,7 +7,10 @@ use Monolog\Handler\NullHandler;
 use Monolog\Logger;
 use Odan\Session\PhpSession;
 use Odan\Session\SessionInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
+use ReflectionClass;
+use ReflectionException;
 use RuntimeException;
 
 /**
@@ -70,5 +73,28 @@ trait AppTestTrait
         });
 
         return $this->container;
+    }
+
+    /**
+     * Mocking an interface.
+     *
+     * @param string $interface The interface / class name
+     *
+     * @throws ReflectionException
+     *
+     * @return MockObject The mock
+     */
+    protected function getMockedInterface(string $interface): MockObject
+    {
+        $reflection = new ReflectionClass($interface);
+
+        $methods = [];
+        foreach ($reflection->getMethods() as $method) {
+            $methods[] = $method->name;
+        }
+
+        return $this->getMockBuilder($interface)
+            ->setMethods($methods)
+            ->getMock();
     }
 }

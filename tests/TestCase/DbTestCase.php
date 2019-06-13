@@ -4,12 +4,12 @@ namespace App\Test\TestCase;
 
 use Cake\Database\Connection;
 use PDO;
-use Phinx\Console\Command\Migrate;
+use Phinx\Config\Config;
+use Phinx\Migration\Manager;
 use PHPUnit\Framework\TestCase;
-use ReflectionException;
 use RuntimeException;
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\Console\Input\StringInput;
+use Symfony\Component\Console\Output\NullOutput;
 
 /**
  * Database tests.
@@ -34,8 +34,6 @@ class DbTestCase extends TestCase
 
     /**
      * Call this template method before each test method is run.
-     *
-     * @throws ReflectionException
      *
      * @return void
      */
@@ -63,8 +61,6 @@ class DbTestCase extends TestCase
 
     /**
      * Get PDO.
-     *
-     * @throws ReflectionException
      *
      * @return PDO
      */
@@ -105,7 +101,7 @@ class DbTestCase extends TestCase
     }
 
     /**
-     * Run phinx migrate command.
+     * Prepare the database schema.
      *
      * @throws RuntimeException
      *
@@ -113,22 +109,10 @@ class DbTestCase extends TestCase
      */
     protected function migrate(): bool
     {
-        $phinxApplication = new Application();
-        $phinxApplication->add(new Migrate());
-
-        $phinxMigrateCommand = $phinxApplication->find('migrate');
-        $phinxCommandTester = new CommandTester($phinxMigrateCommand);
-        $phinxCommandTester->execute([
-            'command' => $phinxMigrateCommand->getName(),
-            '--configuration' => __DIR__ . '/../../config/phinx.php',
-            '--parser' => 'php',
-        ]);
-
-        $phinxDisplay = $phinxCommandTester->getDisplay();
-        $phinxStatusCode = $phinxCommandTester->getStatusCode();
-        if ($phinxStatusCode > 0 || !strpos($phinxDisplay, 'All Done.')) {
-            throw new RuntimeException('Running migration failed');
-        }
+        $config = new Config(require __DIR__ . '/../../config/phinx.php');
+        $manager = new Manager($config, new StringInput(' '), new NullOutput());
+        $manager->migrate('local');
+        $manager->seed('local');
 
         return true;
     }
@@ -206,8 +190,6 @@ class DbTestCase extends TestCase
      * Iterate over all the fixture rows specified and insert them into their respective tables.
      *
      * @param array $fixtures Fixtures
-     *
-     * @throws ReflectionException
      *
      * @return void
      */
