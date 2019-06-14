@@ -80,7 +80,7 @@ This project comes configured with:
 
 ### Using Composer
 
-Read more: [Installing the application with Composer.](https://odan.github.io/psr7-skeleton/#installation)
+Read more: [Installing the application with Composer.](https://odan.github.io/psr7-skeleton/manual-setup.html)
 
 ## Documentation
 
