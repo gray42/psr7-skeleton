@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\NullOutput;
  */
 class IntegrationTestCase extends TestCase
 {
-    use AppTestTrait;
+    use ContainerTestTrait;
 
     /** {@inheritdoc} */
     protected function setUp()

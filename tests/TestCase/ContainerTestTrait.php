@@ -13,9 +13,9 @@ use ReflectionClass;
 use RuntimeException;
 
 /**
- * Trait.
+ * Container Trait.
  */
-trait AppTestTrait
+trait ContainerTestTrait
 {
     /** @var Container|null */
     protected $container;

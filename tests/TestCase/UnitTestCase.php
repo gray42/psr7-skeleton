@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  */
 class UnitTestCase extends TestCase
 {
-    use AppTestTrait;
+    use ContainerTestTrait;
 
     /** {@inheritdoc} */
     protected function setUp()
