@@ -2,7 +2,7 @@
 
 You can write several kinds of tests:
 
-* **Unit tests**: Business logic and behavior tests (e.g. Services). Everything runs in memory, very fast.
+* **Unit tests**: Testing units in isolation of its dependencies. Everything should run in-memory, very fast.
 * **Integration tests**: Database tests (e.g. Repositories), quite slow.
 * **Acceptance tests**: HTTP and API tests, quite fast.
 
