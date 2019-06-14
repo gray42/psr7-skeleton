@@ -47,7 +47,8 @@ Responder -[#0000FF]> Action: Response
 deactivate Responder
 Action -[#0000FF]> Router: Response
 deactivate Action
-Router -[#0000FF]> Emitter: Emit Response
+Router -[#0000FF]> FrontController
+FrontController -[#0000FF]> Emitter: Emit Response
 deactivate Router
 activate Emitter
 Emitter -[#0000FF]> User: HTTP Response (header, body)
