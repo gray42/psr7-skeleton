@@ -6,7 +6,8 @@ use App\Domain\User\UserData;
 use App\Domain\User\UserRepositoryInterface;
 use App\Domain\User\UserService;
 use App\Test\Fixture\UserFixture;
-use App\Test\TestCase\DbTestCase;
+use App\Test\TestCase\AppTestTrait;
+use App\Test\TestCase\UnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -14,8 +15,10 @@ use PHPUnit\Framework\MockObject\MockObject;
  *
  * @coversDefaultClass \App\Domain\User\UserService
  */
-class UserServiceTest extends DbTestCase
+class UserServiceTest extends UnitTestCase
 {
+    use AppTestTrait;
+
     /**
      * Create repository.
      *

@@ -2,12 +2,12 @@
 
 namespace App\Test\TestCase\Action;
 
-use App\Test\TestCase\ApiTestCase;
+use App\Test\TestCase\AcceptanceTestCase;
 
 /**
  * @coversDefaultClass \App\Action\HomePingAction
  */
-class HomePingActionTest extends ApiTestCase
+class HomePingActionTest extends AcceptanceTestCase
 {
     /**
      * Test create object.

@@ -2,14 +2,14 @@
 
 namespace App\Test\TestCase\Action;
 
-use App\Test\TestCase\ApiTestCase;
+use App\Test\TestCase\AcceptanceTestCase;
 
 /**
  * Test.
  *
  * @coversDefaultClass \App\Action\HomeIndexAction
  */
-class HomeIndexActionTest extends ApiTestCase
+class HomeIndexActionTest extends AcceptanceTestCase
 {
     /**
      * Verify a non-authenticated user gets redirected to your login page.

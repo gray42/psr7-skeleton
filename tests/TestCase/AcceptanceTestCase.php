@@ -11,9 +11,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
- * Class ApiTestCase.
+ * Acceptance Test.
  */
-class ApiTestCase extends BaseTestCase
+class AcceptanceTestCase extends BaseTestCase
 {
     use AppTestTrait;
 

@@ -12,9 +12,9 @@ use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\NullOutput;
 
 /**
- * Database tests.
+ * Integration test.
  */
-class DbTestCase extends TestCase
+class IntegrationTestCase extends TestCase
 {
     use AppTestTrait;
 
@@ -67,18 +67,6 @@ class DbTestCase extends TestCase
     public function getPdo(): PDO
     {
         return $this->getConnection()->getDriver()->getConnection();
-    }
-
-    /**
-     * Create a new instance.
-     *
-     * @param string $class The class name
-     *
-     * @return mixed The instance
-     */
-    protected function createInstance(string $class)
-    {
-        return $this->getContainer()->get($class);
     }
 
     /**

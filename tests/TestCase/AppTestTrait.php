@@ -10,7 +10,6 @@ use Odan\Session\SessionInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
-use ReflectionException;
 use RuntimeException;
 
 /**
@@ -76,11 +75,21 @@ trait AppTestTrait
     }
 
     /**
+     * Create a new instance.
+     *
+     * @param string $class The class name
+     *
+     * @return mixed The instance
+     */
+    protected function createInstance(string $class)
+    {
+        return $this->getContainer()->get($class);
+    }
+
+    /**
      * Mocking an interface.
      *
      * @param string $interface The interface / class name
-     *
-     * @throws ReflectionException
      *
      * @return MockObject The mock
      */

@@ -5,14 +5,14 @@ namespace App\Test\TestCase\Domain\User;
 use App\Domain\User\UserData;
 use App\Domain\User\UserRepository;
 use App\Test\Fixture\UserFixture;
-use App\Test\TestCase\DbTestCase;
+use App\Test\TestCase\IntegrationTestCase;
 
 /**
  * Tests.
  *
  * @coversDefaultClass \App\Domain\User\UserRepository
  */
-class UserRepositoryTest extends DbTestCase
+class UserRepositoryTest extends IntegrationTestCase
 {
     /**
      * Create repository.
