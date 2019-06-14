@@ -2,7 +2,7 @@
 
 ### Overview
 
-A typical HTTP reqest data flow and back to the response.
+A typical HTTP reqest data flow and back to the response:
 
 ![image](https://user-images.githubusercontent.com/781074/59540964-b2dad000-8eff-11e9-89da-aa98e400bd88.png)
 
@@ -15,13 +15,13 @@ A typical HTTP reqest data flow and back to the response.
 3. Dispatch the request to the router.
 4. The router uses the HTTP method and the HTTP path to determine the appropriate action method.
 5. The invoked controller action is responsible for:
-  * Retrieving informations from the request
-  * Invoking the service and passing the parameters
-  * Building the view data
-  * Returning the response using a responder
+   * Retrieving informations from the request
+   * Invoking the service and passing the parameters
+   * Building the view data
+   * Returning the response using a responder
 6. The service is a use case handler and responsible for:
-  * The business logic (validation, calculation, transaction handling, etc.)
-  * Returning the result (optional)
+   * The business logic (validation, calculation, transaction handling, etc.)
+   * Returning the result (optional)
 7. The service can read ir write data to the database using a repository
 8. The repository query handler creates a so called "use case optimal query" using a QueryBuilder
 9. Execute the database query
