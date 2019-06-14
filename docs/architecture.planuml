@@ -1,7 +1,7 @@
 @startuml
 
 title Web Application Architecture
-header v2019.6.10.0
+header v2019.6.14.0
 footer Page %page% of %lastpage%
 
 autonumber
@@ -33,7 +33,7 @@ Repository -> Database: Query / Execute
 activate Database
 Database --> Repository: Result set / PK
 deactivate Database
-Repository --> Repository : Map row(s) to\ndomain object(s)\n(ValueObject or Entity).\nOptional use a DataMapper
+Repository --> Repository : Map row(s) to\nobject or list of data objects.\nOptional use a DataMapper
 Repository -> Service: Query Result
 deactivate Repository
 Service -> Service: Calculation,\nTransactions
