@@ -1,10 +1,36 @@
 ## Testing
 
-### Unit tests
+You can write several kinds of tests:
 
-* todo
+* **Unit tests**: Business logic and behavior tests (e.g. Services). Everything runs in memory, very fast.
+* **Integration tests**: Database tests (e.g. Repositories), quite slow.
+* **Acceptance tests**: HTTP and API tests, quite fast.
 
-#### Debugging unit tests with PhpStorm
+### Unit Tests
+
+Unit tests should test the behavior and not the implementation details of your (service) classes.
+Make sure that unit tests are running in-memory only, because they have to be very fast. 
+
+#### Mocking the database
+
+For the sake of real unit-tests and performance, we recommend mocking all Repository interfaces 
+(no problem with phpunit) or create an memory based Repository that implements the
+required Repository interface.
+
+This will allow you to write real unit tests without any database interactions. 
+
+Of course you still can (and should) implement [Integration Tests](#integration-tests) 
+with a real testing database.
+
+We are using the [PHPUnit mocking functionality](https://phpunit.de/manual/current/en/test-doubles.html)
+to create mocks for the repository interface. This will allow you to create custom result sets per test,
+without touching the database and without extra mock classes.
+
+Please take a look at this example to see how to mock out the complete database:
+
+* `tests/TestCase/Domain/User/UserServiceTest.php`
+
+### Debugging Unit Tests
 
 To debug tests with PhpStorm you must have to mark the directory `tests/` 
 as the test root source.
@@ -17,31 +43,39 @@ as the test root source.
 * Right click `test`
 * Click `Debug (tests) PHPUnit`
 
-### HTTP tests
+### Integration Tests
 
-Everything is prepared to run mocked http tests.
+Everything is ready to run real database tests.
 
-Please take a look at the example tests in:
+Please take a look at this example test:
+
+* `tests/TestCase/Domain/User/UserRepositoryTest.php`
+
+#### Fixtures
+
+See: `tests/Fixture/`
+
+todo: Add more description
+
+#### Seeds
+
+See: `resources/seeds/`
+
+todo: Add more description
+
+### Acceptance Tests
+
+Everything is prepared to run mocked HTTP tests. 
+
+You don't need external services like the [Postman](https://www.getpostman.com/), 
+because now you're able to simulate requests yourself.
+
+Please have a look at these sample tests:
 
 * `tests/TestCase/HomeIndexActionTest.php`
 * `test/TestCase/HomePingActionTest.php`
 
-## Database Testing
-
-Everything is ready to run integration tests.
-
-Please take a look at the example tests in:
-
-* `tests/TestCase/Domain/User/UserRepositoryTest.php`
-
-## Mocking
-
-There is no special mocking example available. 
-
-Just use the [PHPUnit mocking functionality](https://phpunit.de/manual/current/en/test-doubles.html)
-or install other mocking libraries you want. Feel free.
-
-
+> Tip: Try out [Codeception](https://codeception.com/) for more advanced acceptance tests.
 
 <hr>
 

@@ -10,7 +10,7 @@ zero overhead to your application.
 
 Twig view files use the `.twig` file extension and are typically stored in the `templates/` directory.
 
-### Localization
+### Translation
 
 The integrated localization features provide a convenient way to retrieve strings 
 in various languages, allowing you to easily support multiple languages within 
@@ -29,7 +29,7 @@ Example:
 * fr_FR_messages.mo
 * fr_FR_messages.po
 
-#### Configure Localization
+#### Configure Translation
 
 * todo: Add description how to add more languages
 
@@ -95,18 +95,20 @@ Translate a text with a placeholder:
 
 [Read more](https://github.com/odan/twig-translation#usage)
 
-### Updating Assets
+### Assets
 
-To update all main assets like jquery and bootrap run:
+#### Updating Assets
+
+To update all main assets like jquery and bootstrap run:
 
 ```bash
 $ ant update-assets
 ```
 
-You can add more assets in `package.json` or diretly via `npm`.
+You can add more assets in `package.json` or directly via `npm`.
 
 Open the file `build.xml` and navigate to the target `update-assets` 
-and add more items to copy the required files into the `public` directory.
+and add more items to copy the required files into the `public/` directory.
 
 
 <hr>

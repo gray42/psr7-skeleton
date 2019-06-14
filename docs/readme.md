@@ -11,10 +11,10 @@ Logging and Unit testing.
 
 ## Table of contents
 
-* [Architecture](architecture.md)
 * [Installation](manual-setup.md)
   * [Manual Setup](manual-setup.md)
   * [Vagrant Setup](vagrant-setup.md)
+* [Architecture](architecture.md)
 * [Configuration](configuration.md)
 * [Directory structure](directory-structure.md)
 * [Routing](routing.md)
@@ -23,10 +23,8 @@ Logging and Unit testing.
 * [Errors and logging](errors-and-logging.md)
 * [Frontend](frontend.md)
   * [Twig Templates](frontend.md#twig-templates)
-  * [Internationalization](frontend.md#internationalization)
-  * [Translations](frontend.md#translations)
-  * [Localization](frontend.md#localization)
-  * [Updating Assets](frontend.md#updating-assets)
+  * [Translations](frontend.md#translation)
+  * [Assets](frontend.md#assets)
 * [Database](database.md)
   * [Database configuration](database.md#database-configuration)
   * [Query Builder](database.md#query-builder)
@@ -47,9 +45,8 @@ Logging and Unit testing.
   * [Authorization](security.md#authorization)
   * [CSRF Protection](security.md#csrf-protection)
 * [Testing](testing.md)
-  * [Unit tests](testing.md#unit-testing)
-  * [HTTP Tests](testing.md#http-tests)
-  * [Database Testing](testing.md#database-testing)
-  * [Mocking](testing.md#mocking)
+  * [Unit tests](testing.md#unit-tests)
+  * [Integration Testing](testing.md#integration-tests)
+  * [Acceptance Tests](testing.md#acceptance-tests)
 * [Deployment](deployment.md)
   
