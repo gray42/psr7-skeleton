@@ -59,6 +59,8 @@ Logging and Unit testing.
 
 ![image](https://user-images.githubusercontent.com/781074/59226620-b9053f80-8bd3-11e9-9b79-c75f3667fa5f.png)
 
+[Fullscreen](https://user-images.githubusercontent.com/781074/59226620-b9053f80-8bd3-11e9-9b79-c75f3667fa5f.png)
+
 ## Installation
 
 ### Manual Setup
@@ -261,27 +263,36 @@ All the app routes are defined in the [routes.php](https://github.com/odan/psr7-
 The `$router` variable is responsible for registering the routes. 
 You will notice that most routes are enclosed in the `group` method which gives the prefix to the most routes.
 
-Every route is defined by a method corresponds to the HTTP verb. For example, a post request to register a user is defined by:
+Every route is defined by a method corresponds to the HTTP verb. For example, a POST request to register a user is defined by:
 
 ```php
-$this->get('/users', \App\Action\UserIndexAction::class);
+$group->post('/users', \App\Action\UserRegisterAction::class);
 ```
-> Notice: we use `$this` because where are inside a closure that is bound to `$app`; 
 
 ## Middleware
 
-In a PSR-7/PSR-15 app, you can add middleware to all incoming routes, 
+In a PSR-7/PSR-15 application, you can add middleware handler to all incoming routes, 
 to a specific route, or to a group of routes. 
 
 [Check the documentations](https://route.thephpleague.com/) 
 
-In this app we add some middleware to specific routes.
+### Global middleware
 
-Also, we add some global middleware to apply to all requests in [middleware.php](https://github.com/odan/psr7-skeleton/blob/master/config/middleware.php).
+We already added some global middleware handlers to ensure
+that the exception handler and some security related checks are allways enabled.
+
+More details: [config/middleware.php](https://github.com/odan/psr7-skeleton/blob/master/config/middleware.php)
+
+### Route specific middleware
+
+You can also add custom middleware handler per route and/or a complete routing group. This makes
+it easier to differentiate beetween public and protected areas, as well as api resources etc.
+
+More details: [config/routes.php](https://github.com/odan/psr7-skeleton/blob/master/config/routes.php)
 
 ## Controllers
 
-After passing through all assigned middleware, the request will be processed by a controller / action.
+After passing through all assigned middleware, the request will be processed by a (controller) action.
 
 The Controller's job is to translate incoming requests into outgoing responses. 
 
@@ -290,10 +301,10 @@ and pass it into the domain service layer.
 
 The domain service layer then returns data that the Controller injects into a View for rendering. 
 
-This view might be HTML for a standard web request; or, 
+A view might be HTML for a standard web request; or, 
 it might be something like JSON for a RESTful API request.
 
-The application uses `Single Action Controllers` which means: one action per class.
+This application uses `Single Action Controllers` which means: One action per class.
 
 A typical action method signature should look like this:
 
@@ -301,8 +312,7 @@ A typical action method signature should look like this:
 public function __invoke(ServerRequestInterface $request): ResponseInterface
 ```
 
-The framework will inject all dependencies for you automatically (via constructor injection)
-by passing the container instance into the constructor.
+The container autowire-feature will automatically inject all dependencies for you via constructor injection.
 
 Action example class:
 
@@ -334,7 +344,7 @@ class ExampleAction implements ActionInterface
 }
 ```
 
-This concept will produce more class files, but these action classes have only one responsibility (SRP).
+This concept will produce more classes, but these action classes have only one responsibility (SRP).
 Refactoring action classes is very easy now, because the routes in `routes.php` make use of the `::class` constant. 
 
 ## Errors and logging
