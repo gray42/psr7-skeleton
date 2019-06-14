@@ -1,14 +1,30 @@
 ## Configuration
 
+### 
+
 ### Environment configuration
 
-All the app environments variables are stored in the `env.php` file.
+You may be familiar with the concept of `.env` files. We are considering
+`.env` as harmful because: 
 
-The command `php bin/cli.php install` will copy `env.example.php` to `env.php` which should have 
-your own variables and never shared or committed into git.
+* people could put the file `.env` into a public available directory
+* public available `.env` will be indexed by search engines
+* `.env` files are not native and much slower then PHP
+* `.env` files are not intended to run on a production server. Many developers do it anyway.
+* vlucas/phpdotenv is a necessary dependency. PHP can do it better.
+* vlucas/phpdotenv is buggy in multi-thread PHP [(read more)](https://github.com/craftcms/cms/issues/3631)
 
-Just rename the file `env.example.php` to `env.php`.
+For security and performance reasons, all secret environments variables 
+are better stored in a file called: `env.php`.
 
+**Usage**: Just create a copy of the file `config/env.example.php` and rename it to
+`config/env.php`
+ 
+> For security reasons you should NEVER EVER commit the file `env.php` into the version control system!
+
+You can and should use a `env.php` on your testing/staging/production server too.
+In this case just store the server specific `env.php` file 
+one directory above the project root directory.
 
 <hr>
 

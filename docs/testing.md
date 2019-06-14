@@ -67,8 +67,8 @@ todo: Add more description
 
 Everything is prepared to run mocked HTTP tests. 
 
-You don't need external services like the [Postman](https://www.getpostman.com/), 
-because now you're able to simulate requests yourself.
+You don't need external services like [Postman](https://www.getpostman.com/), 
+because it's possible to simulate all requests yourself.
 
 Please have a look at these sample tests:
 
