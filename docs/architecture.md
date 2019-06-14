@@ -21,7 +21,6 @@ A typical HTTP reqest data flow and back to the response.
   * Returning the response using a responder
 6. The service is a use case handler and responsible for:
   * The business logic (validation, calculation, transaction handling, etc.)
-  * 
   * Returning the result (optional)
 7. The service can read ir write data to the database using a repository
 8. The repository query handler creates a so called "use case optimal query" using a QueryBuilder
@@ -39,6 +38,7 @@ A typical HTTP reqest data flow and back to the response.
 20. Return the response to the front controller
 21. The front controller emits the response using the SAPI Emitter
 22. The emitter sends the HTTP headers and echos the HTTP body back to the client
+
 <hr>
 
 Navigation: [Index](readme.md)
