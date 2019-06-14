@@ -1,4 +1,4 @@
-# Configuration
+## Configuration
 
 ### Environment configuration
 
@@ -12,4 +12,4 @@ Just rename the file `env.example.php` to `env.php`.
 
 <hr>
 
-Navigation: [Index](index.md)
+Navigation: [Index](readme.md)

@@ -1,4 +1,4 @@
-# Deployment
+## Deployment
 
 ### Building an artifact
 
@@ -37,4 +37,4 @@ $ sudo php deploy.php my_app_2019-01-29_235044.zip
 
 <hr>
 
-Navigation: [Index](index.md)
+Navigation: [Index](readme.md)

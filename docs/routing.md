@@ -1,4 +1,4 @@
-# Routing
+## Routing
 
 All requests go through the same cycle:  `routing > middleware > conroller/action > response`
 
@@ -17,4 +17,4 @@ $group->post('/users', \App\Action\UserRegisterAction::class);
 
 <hr>
 
-Navigation: [Index](index.md)
+Navigation: [Index](readme.md)

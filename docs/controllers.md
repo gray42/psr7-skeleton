@@ -1,4 +1,4 @@
-# Controllers
+## Controllers
 
 After passing through all assigned middleware, the request will be processed by a (controller) action.
 
@@ -57,4 +57,4 @@ Refactoring action classes is very easy now, because the routes in `routes.php` 
 
 <hr>
 
-Navigation: [Index](index.md)
+Navigation: [Index](readme.md)

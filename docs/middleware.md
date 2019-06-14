@@ -1,4 +1,4 @@
-# Middleware
+## Middleware
 
 In a PSR-7/PSR-15 application, you can add middleware handler to all incoming routes, 
 to a specific route, or to a group of routes. 
@@ -21,4 +21,4 @@ More details: [config/routes.php](https://github.com/odan/psr7-skeleton/blob/mas
 
 <hr>
 
-Navigation: [Index](index.md)
+Navigation: [Index](readme.md)

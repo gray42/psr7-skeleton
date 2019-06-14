@@ -1,4 +1,4 @@
-# Manual Setup
+## Manual Setup
 
 **Step 1:** Create a new project:
 
@@ -46,4 +46,4 @@ sudo php bin/cli.php install
 
 <hr>
 
-Navigation: [Index](index.md)
+Navigation: [Index](readme.md)
