@@ -1,6 +1,9 @@
 ## Configuration
 
-### 
+### Application configuration 
+
+* see `config/*`
+* todo: Add more description
 
 ### Environment configuration
 
@@ -8,10 +11,10 @@ You may be familiar with the concept of `.env` files. We are considering
 `.env` as harmful because: 
 
 * people could put the file `.env` into a public available directory
-* public available `.env` will be indexed by search engines
+* a public available `.env` file will be indexed by search engines
 * `.env` files are not native and much slower then PHP
 * `.env` files are not intended to run on a production server. Many developers do it anyway.
-* vlucas/phpdotenv is a necessary dependency. PHP can do it better.
+* vlucas/phpdotenv is a unnecessary dependency. PHP can do it better.
 * vlucas/phpdotenv is buggy in multi-thread PHP [(read more)](https://github.com/craftcms/cms/issues/3631)
 
 For security and performance reasons, all secret environments variables 
