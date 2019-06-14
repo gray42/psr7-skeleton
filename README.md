@@ -84,7 +84,7 @@ Read more: [Installing the application with Composer.](https://odan.github.io/ps
 
 ## Documentation
 
-Full documentation of this application can be found here: <https://odan.github.io/psr7-skeleton/>.
+The documentation of this demo application can be found here: [Documentation](https://odan.github.io/psr7-skeleton)
 
 ## License
 
