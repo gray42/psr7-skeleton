@@ -8,9 +8,9 @@ This is a multi-layered MVC architecture for enterprise applications.
 
 The **model layer** (M) is divided into multiple sub-categories:
 
-* **Services:** Business logic (calulations, validation, transactions)
-* **Repositories:** Data access logic, communication with databases
-* **Data:** Plain data objects (without complex logic) e.g. Value Objects, DTOs
+* **Service:** Business logic (calculation, validation, transaction handling)
+* **Repository:** Data access logic, communication with databases
+* **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
 
 In a Service-Oriented Architecture (SOA) we are seperating the behavior and the data.
 Please do not confuse it with classic OOP, where behavior and data belongs togehter.
