@@ -2,7 +2,7 @@
 
 This is a multi-layered MVC 2 architecture for enterprise applications. 
 
-* **Model:** The core application
+* **Model:** The core application, business logic, data manipulation
 * **View:** Presentation layer, display of information
 * **Controller:** Mediates between View and Model
 
