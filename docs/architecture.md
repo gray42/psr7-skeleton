@@ -6,6 +6,8 @@ This is a multi-layered MVC 2 architecture for enterprise applications.
 * **View:** Presentation layer, display of information
 * **Controller:** Mediates between View and Model
 
+![image](https://user-images.githubusercontent.com/781074/59565895-13315500-9059-11e9-9815-34ce85ed498a.png)
+
 The **model layer** (M) is divided into multiple sub-categories:
 
 * **Service:** Business logic (calculation, validation, transaction handling)
