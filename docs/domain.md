@@ -1,19 +1,5 @@
 ## Domain
 
-The model layer.
-
-### Repositories
-
-A distinction is actually made between collection-oriented and persistence-oriented repositories. In this case, we are talking about **persistence-oriented repositories**, since these are better suited for processing large amounts of data.
-
-A repository is the source of all the data your application needs. It serves as an interface between the domain layer (Domain services) and the data access layer (DAO). According to Martin Fowler, "A repository is another layer above the data mapping layer. It mediates between domain and data mapping layers (data mappers)". A repository improves code maintainability, testing and readability by separating `business logic` from `data access logic` and provides centrally managed and consistent access rules for a data source. Each public repository method represents a query. The return values represent the result set of a query and can be primitive/object or list (array) of them. Database transactions must be handled on a higher level (domain service) and not within a repository.
-
-Quick summary:
-
-* Communication with the database.
-* Place for the data access logic (query logic).
-* This is no place for the business logic! Use [domain services](#domain-services) for the complex business and domain logic.
-
 ### Domain Services
 
 Here is the right place for complex business logic e.g. calulation, validation, file creation etc.
@@ -32,6 +18,19 @@ you might have a `UserRegistration` class with a few methods focusing on registr
 > Q: Why would i change my UserRegistration class?<br>
 > A: Because I'm changing how I register a user<br>
 > A: And not because I'm changing how I assign a User to a Task. Because that's being handled by the UserTaskAssignment class.<br>
+
+### Repositories
+
+A distinction is actually made between collection-oriented and persistence-oriented repositories. In this case, we are talking about **persistence-oriented repositories**, since these are better suited for processing large amounts of data.
+
+A repository is the source of all the data your application needs. It serves as an interface between the domain layer (Domain services) and the data access layer (DAO). According to Martin Fowler, "A repository is another layer above the data mapping layer. It mediates between domain and data mapping layers (data mappers)". A repository improves code maintainability, testing and readability by separating `business logic` from `data access logic` and provides centrally managed and consistent access rules for a data source. Each public repository method represents a query. The return values represent the result set of a query and can be primitive/object or list (array) of them. Database transactions must be handled on a higher level (domain service) and not within a repository.
+
+Quick summary:
+
+* Communication with the database.
+* Place for the data access logic (query logic).
+* This is no place for the business logic! Use [domain services](#domain-services) for the complex business and domain logic.
+
 
 ### Value Objects
 
