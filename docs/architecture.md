@@ -12,10 +12,7 @@ The **model layer** (M) is divided into multiple sub-categories:
 * **Repository:** Data access logic, communication with databases
 * **Data:** Domain objects with data (without complex logic) e.g. Value Objects, DTOs
 
-In a Service-Oriented Architecture (SOA) we are seperating the behavior and the data.
-Please do not confuse it with classic OOP, where behavior and data belongs togehter.
-
-By seperating behavior from data, it's possible to build and maintain non-trivial applications over many years.
+In a Service-Oriented Architecture (SOA) we are seperating the behavior and the data. Please do not confuse it with classic OOP, where behavior and data belongs togehter. By seperating behavior from data, it's possible to build and maintain non-trivial applications over many years.
 
 This architecture also respects the SOLID principles to be TDD-friendly as much as possible.
 
