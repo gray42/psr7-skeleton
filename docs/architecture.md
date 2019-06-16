@@ -1,5 +1,24 @@
 ## Architecture
 
+This is a multilayered MVC application. 
+
+* **Model:** The core application
+* **View:** Presentation layer, display of information
+* **Controller:** Mediates between View and Model
+
+The model layer (M) is divied into multiple domain sub-layers (categories):
+
+* **Services:** Business logic (calulations, validation, transactions)
+* **Repositories:** Data access logic, communication with databases
+* **Data:** Plain data objects (without complex logic)
+
+With a Service-Oriented Architecture (SOA) we are seperating the behavior and the data.
+Please don't confuse it with classic OOP, where behavior and data belongs togehter.
+
+By seperating behavior from data it's possible to build and maintain non trivial applications over many years.
+
+This architecture also respects the SOLID principles to be TDD-friendly as much as possible.
+
 ### Overview
 
 A typical HTTP reqest data flow and back to the response:
