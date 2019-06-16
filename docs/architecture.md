@@ -6,7 +6,7 @@ This is a multi-layered MVC architecture for enterprise applications.
 * **View:** Presentation layer, display of information
 * **Controller:** Mediates between View and Model
 
-The **model layer** (M) is divied into multiple sub-categories:
+The **model layer** (M) is divided into multiple sub-categories:
 
 * **Services:** Business logic (calulations, validation, transactions)
 * **Repositories:** Data access logic, communication with databases
