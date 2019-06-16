@@ -1,6 +1,6 @@
 ## Architecture
 
-This is a multi-layered MVC architecture for enterprise applications. 
+This is a multi-layered MVC 2 architecture for enterprise applications. 
 
 * **Model:** The core application
 * **View:** Presentation layer, display of information
