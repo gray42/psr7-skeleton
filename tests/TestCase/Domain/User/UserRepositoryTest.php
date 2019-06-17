@@ -5,24 +5,17 @@ namespace App\Test\TestCase\Domain\User;
 use App\Domain\User\UserData;
 use App\Domain\User\UserRepository;
 use App\Test\Fixture\UserFixture;
-use App\Test\TestCase\IntegrationTestCase;
+use App\Test\TestCase\IntegrationTestTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests.
  *
  * @coversDefaultClass \App\Domain\User\UserRepository
  */
-class UserRepositoryTest extends IntegrationTestCase
+class UserRepositoryTest extends TestCase
 {
-    /**
-     * Create repository.
-     *
-     * @return UserRepository the repository
-     */
-    protected function createRepository(): UserRepository
-    {
-        return $this->createInstance(UserRepository::class);
-    }
+    use IntegrationTestTrait;
 
     /**
      * Fixtures.
@@ -32,6 +25,16 @@ class UserRepositoryTest extends IntegrationTestCase
     public $fixtures = [
         UserFixture::class,
     ];
+
+    /**
+     * Create repository.
+     *
+     * @return UserRepository the repository
+     */
+    protected function createRepository(): UserRepository
+    {
+        return $this->createInstance(UserRepository::class);
+    }
 
     /**
      * Test.

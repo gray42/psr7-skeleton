@@ -3,6 +3,7 @@
 namespace App\Domain\User;
 
 use App\Repository\QueryFactory;
+use App\Repository\RepositoryInterface;
 use App\Repository\TableRepository;
 use DomainException;
 use InvalidArgumentException;
@@ -10,7 +11,7 @@ use InvalidArgumentException;
 /**
  * Repository.
  */
-final class UserRepository implements UserRepositoryInterface
+class UserRepository implements RepositoryInterface
 {
     /**
      * @var QueryFactory

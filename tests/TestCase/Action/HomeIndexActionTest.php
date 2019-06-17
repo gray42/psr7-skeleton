@@ -2,15 +2,18 @@
 
 namespace App\Test\TestCase\Action;
 
-use App\Test\TestCase\AcceptanceTestCase;
+use App\Test\TestCase\AcceptanceTestTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test.
  *
  * @coversDefaultClass \App\Action\HomeIndexAction
  */
-class HomeIndexActionTest extends AcceptanceTestCase
+class HomeIndexActionTest extends TestCase
 {
+    use AcceptanceTestTrait;
+
     /**
      * Verify a non-authenticated user gets redirected to your login page.
      *

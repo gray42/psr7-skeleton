@@ -5,7 +5,6 @@ namespace App\Test\TestCase;
 use Exception;
 use League\Route\Router;
 use Nyholm\Psr7\Factory\Psr17Factory;
-use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
@@ -13,18 +12,18 @@ use Psr\Http\Message\UriInterface;
 /**
  * Acceptance Test.
  */
-class AcceptanceTestCase extends TestCase
+trait AcceptanceTestTrait
 {
     use ContainerTestTrait;
 
     /** {@inheritdoc} */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->bootApp();
     }
 
     /** {@inheritdoc} */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->shutdownApp();
     }

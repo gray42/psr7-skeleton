@@ -10,16 +10,16 @@ use App\Domain\Service\ServiceInterface;
 final class UserService implements ServiceInterface
 {
     /**
-     * @var UserRepositoryInterface|UserRepository
+     * @var UserRepository
      */
     private $userRepository;
 
     /**
      * Constructor.
      *
-     * @param UserRepositoryInterface $userRepository The repository
+     * @param UserRepository $userRepository The repository
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }

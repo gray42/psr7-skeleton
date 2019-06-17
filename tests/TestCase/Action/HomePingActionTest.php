@@ -2,17 +2,18 @@
 
 namespace App\Test\TestCase\Action;
 
-use App\Test\TestCase\AcceptanceTestCase;
+use App\Test\TestCase\AcceptanceTestTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @coversDefaultClass \App\Action\HomePingAction
  */
-class HomePingActionTest extends AcceptanceTestCase
+class HomePingActionTest extends TestCase
 {
+    use AcceptanceTestTrait;
+
     /**
      * Test create object.
-     *
-     * @throws \Exception
      *
      * @return void
      *

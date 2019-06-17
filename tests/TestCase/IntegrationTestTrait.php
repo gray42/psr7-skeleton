@@ -6,7 +6,6 @@ use Cake\Database\Connection;
 use PDO;
 use Phinx\Config\Config;
 use Phinx\Migration\Manager;
-use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\NullOutput;
@@ -14,7 +13,7 @@ use Symfony\Component\Console\Output\NullOutput;
 /**
  * Integration test.
  */
-class IntegrationTestCase extends TestCase
+trait IntegrationTestTrait
 {
     use ContainerTestTrait;
 
