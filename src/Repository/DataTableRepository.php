@@ -9,7 +9,7 @@ use RuntimeException;
 /**
  * Repository.
  */
-final class DataTableRepository implements RepositoryInterface
+class DataTableRepository implements RepositoryInterface
 {
     /**
      * @var QueryFactory

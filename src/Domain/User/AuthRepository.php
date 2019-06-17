@@ -8,7 +8,7 @@ use App\Repository\RepositoryInterface;
 /**
  * Repository.
  */
-final class AuthRepository implements RepositoryInterface
+class AuthRepository implements RepositoryInterface
 {
     /**
      * @var QueryFactory

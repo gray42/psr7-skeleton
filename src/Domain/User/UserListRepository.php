@@ -9,7 +9,7 @@ use App\Repository\RepositoryInterface;
 /**
  * Repository.
  */
-final class UserListRepository implements RepositoryInterface
+class UserListRepository implements RepositoryInterface
 {
     /**
      * @var QueryFactory

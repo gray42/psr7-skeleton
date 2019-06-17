@@ -5,7 +5,7 @@ namespace App\Repository;
 /**
  * Repository.
  */
-final class TableRepository implements RepositoryInterface
+class TableRepository implements RepositoryInterface
 {
     /**
      * @var QueryFactory
