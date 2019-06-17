@@ -75,18 +75,18 @@ final class RouterUrl
     private function relativePathFor(string $name, array $data = [], array $queryParams = []): string
     {
         $pattern = $this->router->getNamedRoute($name)->getPath();
-        $routeDatas = $this->routeParser->parse($pattern);
+        $routeItems = $this->routeParser->parse($pattern);
 
-        // $routeDatas is an array of all possible routes that can be made. There is
-        // one routedata for each optional parameter plus one for no optional parameters.
+        // $routeStrings is an array of all possible routes that can be made. There is
+        // one route item for each optional parameter plus one for no optional parameters.
         //
         // The most specific is last, so we look for that first.
-        $routeDatas = array_reverse($routeDatas);
+        $routeItems = array_reverse($routeItems);
         $segments = [];
         $segmentName = '';
 
-        foreach ($routeDatas as $routeData) {
-            foreach ($routeData as $item) {
+        foreach ($routeItems as $routeItems) {
+            foreach ($routeItems as $item) {
                 if (is_string($item)) {
                     // this segment is a static string
                     $segments[] = $item;
