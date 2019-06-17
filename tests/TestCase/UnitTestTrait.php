@@ -69,8 +69,8 @@ trait UnitTestTrait
     protected function mockMethod($method): InvocationMocker
     {
         /** @var MockObject $mock */
-        $mock = $this->getContainer()->get((string)$method[0]);
+        $mock = $this->getContainer()->get($method[0] ?? '');
 
-        return $mock->method((string)$method[1]);
+        return $mock->method($method[1] ?? '');
     }
 }
