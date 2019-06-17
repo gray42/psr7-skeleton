@@ -31,16 +31,6 @@ $isAdmin = $this->auth->hasRole(UserRole::ROLE_ADMIN);
 
 All session based requests are protected against Cross-site request forgery (CSRF).
 
-## Testing
-
-### Unit testing
-
-All tests are located in the `tests/` folder. To start the unit test run:
-
-``` bash
-$ ant phpunit
-```
-
 <hr>
 
 Navigation: [Index](readme.md)

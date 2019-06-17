@@ -2,7 +2,7 @@
 
 ### Building an artifact
 
-To build a new artifact (ZIP file) which is tested and ready for deployment run:
+To build a new artifact (ZIP file), for deployment, run:
 
 ``` bash
 $ ant build
@@ -10,10 +10,10 @@ $ ant build
 
 The new artifact is created in the `build` directory: `build/my_app_*.zip`
 
-To deploy the artifact to test/staging or production just upload
-the zip file with a sftp client onto your server (`/var/www/example.com`).
-Then extract the artifact into a `htdocs` sub-directory and run the migrations. 
-You can use `deploy.php` for this task.
+To deploy the artifact to test/staging or production, just upload
+the zip file with a SFTP client onto your server (`/var/www/example.com`).
+Then extract the artifact into a `htdocs/` sub-directory and run the migrations. 
+It's recommended to use `deploy.php` script for this task.
 
 #### Server setup
 

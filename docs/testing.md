@@ -1,5 +1,11 @@
 ## Testing
 
+All tests are located in the `tests/` folder. To start the unit test run:
+
+``` bash
+$ ant phpunit
+```
+
 You can write several kinds of tests:
 
 * **Unit tests**: Testing units in isolation of its dependencies. Everything should run in-memory, very fast.

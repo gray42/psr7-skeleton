@@ -22,7 +22,7 @@ public function __invoke(ServerRequestInterface $request): ResponseInterface
 
 The container autowire-feature will automatically inject all dependencies for you via constructor injection.
 
-Action example class:
+**Action example class:**
 
 ```php
 <?php
