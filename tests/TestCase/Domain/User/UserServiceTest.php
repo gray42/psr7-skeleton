@@ -46,7 +46,7 @@ class UserServiceTest extends TestCase
 
         $actual = $service->findAllUsers();
 
-        $this->assertNotEmpty($actual);
+        $this->assertEquals([new UserData()], $actual);
     }
 
     /**
