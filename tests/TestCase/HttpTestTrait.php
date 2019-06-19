@@ -12,7 +12,7 @@ use Psr\Http\Message\UriInterface;
 /**
  * Acceptance Test.
  */
-trait AcceptanceTestTrait
+trait HttpTestTrait
 {
     use ContainerTestTrait;
 

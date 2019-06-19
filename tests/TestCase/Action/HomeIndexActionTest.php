@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action;
 
-use App\Test\TestCase\AcceptanceTestTrait;
+use App\Test\TestCase\HttpTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class HomeIndexActionTest extends TestCase
 {
-    use AcceptanceTestTrait;
+    use HttpTestTrait;
 
     /**
      * Verify a non-authenticated user gets redirected to your login page.

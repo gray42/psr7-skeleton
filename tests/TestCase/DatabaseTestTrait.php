@@ -13,7 +13,7 @@ use Symfony\Component\Console\Output\NullOutput;
 /**
  * Integration test.
  */
-trait IntegrationTestTrait
+trait DatabaseTestTrait
 {
     use ContainerTestTrait;
 

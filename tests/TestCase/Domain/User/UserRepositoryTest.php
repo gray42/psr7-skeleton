@@ -5,7 +5,7 @@ namespace App\Test\TestCase\Domain\User;
 use App\Domain\User\UserData;
 use App\Domain\User\UserRepository;
 use App\Test\Fixture\UserFixture;
-use App\Test\TestCase\IntegrationTestTrait;
+use App\Test\TestCase\DatabaseTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class UserRepositoryTest extends TestCase
 {
-    use IntegrationTestTrait;
+    use DatabaseTestTrait;
 
     /**
      * Fixtures.

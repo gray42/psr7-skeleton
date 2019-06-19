@@ -2,7 +2,7 @@
 
 namespace App\Test\TestCase\Action;
 
-use App\Test\TestCase\AcceptanceTestTrait;
+use App\Test\TestCase\HttpTestTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 class HomePingActionTest extends TestCase
 {
-    use AcceptanceTestTrait;
+    use HttpTestTrait;
 
     /**
      * Test create object.
