@@ -2,11 +2,12 @@
 
 A very basic PSR-7 / PSR-15 application for PHP.
 
-[![Latest Version on Packagist](https://img.shields.io/github/release/odan/psr7-skeleton.svg)](https://github.com/odan/psr7-skeleton/releases)
-[![Software License](https://img.shields.io/badge/license-BSD-brightgreen.svg)](LICENSE.md)
-[![Build Status](https://travis-ci.org/odan/psr7-skeleton.svg?branch=master)](https://travis-ci.org/odan/psr7-skeleton)
-[![Quality Score](https://scrutinizer-ci.com/g/odan/psr7-skeleton/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/odan/psr7-skeleton/?branch=master)
-[![Total Downloads](https://poser.pugx.org/odan/psr7-skeleton/downloads)](https://packagist.org/packages/odan/psr7-skeleton)
+[![Latest Version on Packagist](https://img.shields.io/github/release/odan/psr7-skeleton.svg?style=flat-square)](https://packagist.org/packages/selective/image-type)
+[![Software License](https://img.shields.io/badge/license-BSD-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Build Status](https://img.shields.io/travis/odan/psr7-skeleton/master.svg?style=flat-square)](https://travis-ci.org/odan/psr7-skeleton)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/odan/psr7-skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/odan/psr7-skeleton/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/quality/g/odan/psr7-skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/odan/psr7-skeleton/?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/selective/image-type.svg?style=flat-square)](https://packagist.org/packages/selective/image-type/stats)
 
 ## Requirements
 
