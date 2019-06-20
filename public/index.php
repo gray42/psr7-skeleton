@@ -7,8 +7,8 @@ use Zend\HttpHandlerRunner\Emitter\SapiEmitter;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-/** @var ContainerInterface $container */
-$container = require __DIR__ . '/../config/bootstrap.php';
-
-// Dispatch
-(new SapiEmitter())->emit($container->get(Router::class)->dispatch($container->get(ServerRequestInterface::class)));
+(static function (ContainerInterface $container): void {
+    (new SapiEmitter())
+        ->emit($container->get(Router::class)
+            ->dispatch($container->get(ServerRequestInterface::class)));
+})(require __DIR__ . '/../config/bootstrap.php');

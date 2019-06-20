@@ -5,7 +5,7 @@ use Symfony\Component\Translation\Translator;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-return call_user_func(static function () {
+return (static function () {
     /** @var ContainerInterface $container */
     $container = require __DIR__ . '/container.php';
 
@@ -19,4 +19,4 @@ return call_user_func(static function () {
     __($container->get(Translator::class));
 
     return $container;
-});
+})();
