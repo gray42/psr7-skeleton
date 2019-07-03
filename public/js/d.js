@@ -183,22 +183,6 @@ $d.cfg = {};
 $d.fn = {};
 
 /**
- * Console logging.
- *
- * @param {String} msg
- * @returns {void}
- */
-$d.log = function (msg) {
-    try {
-        if (!console) {
-            return;
-        }
-        console.log(msg);
-    } catch (ex) {
-    }
-};
-
-/**
  * Map object recursively with callback function.
  *
  * @param {Object} obj
@@ -217,100 +201,6 @@ $d.map = function (obj, f) {
         }
     }
     return result;
-};
-
-/**
- * JSON ajax call.
- *
- * @param {String} method
- * @param {Object} params
- * @param {function} fncDone
- * @param {Object} settings
- * @returns {Object}
- */
-$d.call = function (method, params, fncDone, settings) {
-    var url = $('head base').attr('href') + 'json';
-    var request = {
-        method: method
-    };
-    if (typeof params !== 'undefined' && params !== null) {
-        request.params = params;
-    }
-
-    var data = $d.encodeJson(request);
-
-    settings = $.extend({
-        type: 'POST',
-        url: url,
-        data: data,
-        processData: false,
-        dataType: 'json',
-        contentType: 'application/json',
-        success: function (data) {
-            if (typeof fncDone === 'function') {
-                fncDone(data);
-            }
-        }
-    }, settings);
-
-    return $.ajax(settings);
-};
-
-/**
- * Check response object for error and show error message.
- *
- * @param {Object} response
- * @returns {Boolean}
- */
-$d.handleResponse = function (response) {
-    var result = true;
-
-    if (!response || (!response.error && !response.result)) {
-        return false;
-    }
-
-    if ($d.hideLoad) {
-        $d.hideLoad();
-    }
-
-    if (response.error && ('errors' in response.error) === false) {
-        result = false;
-        if ($d.alert) {
-            $d.alert(response.error.message);
-        } else {
-            alert(response.error.message);
-        }
-    }
-
-    // append translations
-    if (response.result && response.result.text) {
-        $d.addText(response.result.text);
-    }
-
-    return result;
-};
-
-/**
- * Convert object to integer (default base = 10)
- *
- * @param {*} obj
- * @param {number} base
- * @returns {number}
- */
-$d.getInt = function (obj, base) {
-    var tmp;
-    var type = typeof (obj);
-
-    if (type === 'boolean') {
-        return +obj;
-    } else if (type === 'string') {
-        tmp = parseInt(obj, base || 10);
-        return (isNaN(tmp) || !isFinite(tmp)) ? 0 : tmp;
-    } else if (type === 'number' && isFinite(obj)) {
-        return obj | 0;
-    } else {
-        return 0;
-    }
 };
 
 /**
@@ -434,63 +324,6 @@ $d.uuid = function () {
 };
 
 /**
- * Base64 encoding
- *
- * @param {String} data
- * @returns {String}
- */
-$d.encodeBase64 = function (data) {
-    data = (data + '').toString();
-    return window.btoa(unescape(encodeURIComponent(data)));
-};
-
-/**
- * Base64 decoding
- *
- * @param {String} data
- * @returns {String}
- */
-$d.decodeBase64 = function (data) {
-    data = (data + '').toString();
-    return decodeURIComponent(escape(window.atob(data)));
-};
-
-/**
- * Json encoder.
- *
- * @param {Object} obj
- * @returns {String}
- */
-$d.encodeJson = function (obj) {
-    try {
-        if ($.isArray(obj)) {
-            throw new Error('Array is not supported');
-        }
-        var json = JSON.stringify(obj);
-        return json;
-    } catch (e) {
-        $d.log(e);
-        return null;
-    }
-};
-
-/**
- * Json decoder.
- *
- * @param {String} str
- * @returns {Object}
- */
-$d.decodeJson = function (str) {
-    try {
-        var obj = $.parseJSON(str);
-        return obj;
-    } catch (e) {
-        $d.log(e);
-        return null;
-    }
-};
-
-/**
  * Interpolates context values into the message placeholders.
  *
  * @param {String} str
@@ -557,23 +390,6 @@ $d.jq = function (str) {
     // whitelist
     str = str.replace(/([^a-zA-Z0-9\-\_])/g, '\\$1');
     return str;
-};
-
-/**
- * Redirect browser.
- *
- * @param {String} url
- * @param {Boolean} replace
- * @returns {undefined}
- */
-$d.redirect = function (url, replace) {
-    if (replace === true) {
-        // similar behavior as an HTTP redirect
-        window.location.replace(url);
-    } else {
-        // similar behavior as clicking on a link
-        window.location.href = url;
-    }
 };
 
 /**
@@ -778,31 +594,6 @@ function __(message) {
 };
 
 /**
- * Returns browser language
- *
- * @returns {String}
- */
-$d.getLanguage = function () {
-    var l = 'en';
-    // Firefox, Chrome,...
-    if (navigator.language) {
-        l = navigator.language;
-    }
-    if (window.navigator.language) {
-        l = window.navigator.language;
-    }
-    // IE only
-    if (window.navigator.systemLanguage) {
-        l = window.navigator.systemLanguage;
-    }
-    if (window.navigator.userLanguage) {
-        l = window.navigator.userLanguage;
-    }
-    var s = l.substring(0, 2);
-    return s;
-};
-
-/**
  * Returns user agent.
  *
  * @returns {String} chrome,ie,firefox,safari,opera or '' (another browser)
@@ -838,75 +629,6 @@ $d.getBrowser = function () {
 };
 
 /**
- * Returns the version of Internet Explorer or a -1
- * (indicating the use of another browser).
- *
- * @returns {float}
- */
-$d.getIeVersion = function () {
-    var num = -1;
-    if (navigator.appName === 'Microsoft Internet Explorer') {
-        var ua = navigator.userAgent;
-        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
-        if (re.exec(ua) !== null) {
-            num = parseFloat(RegExp.$1);
-        }
-    }
-    return num;
-};
-
-/**
- * Returns the version of Mozilla Firefox or a -1
- * (indicating the use of another browser).
- *
- * @returns {Float}
- */
-$d.getFirefoxVersion = function () {
-    var num = -1;
-    var strAgent = navigator.userAgent.toLowerCase();
-    if (strAgent.indexOf('firefox') > -1) {
-        num = parseInt(strAgent.match(/firefox\/(\d+)\./)[1], 10);
-    }
-    return num;
-};
-
-/**
- * Returns the version of Google Chrome or a -1
- * (indicating the use of another browser).
- *
- * @returns {Float}
- */
-$d.getChromeVersion = function () {
-    var num = -1;
-    var strAgent = navigator.userAgent.toLowerCase();
-    if (strAgent.indexOf('chrome') > -1) {
-        num = parseInt(strAgent.match(/chrome\/(\d+)\./)[1], 10);
-    }
-    return num;
-};
-
-/**
- * Returns the version of the Browser or a -1
- * (indicating the use of another browser).
- *
- * @returns {Float}
- */
-$d.getBrowserVersion = function () {
-    var num = -1;
-    var browser = $d.getBrowser();
-    if (browser === 'chrome') {
-        num = $d.getChromeVersion();
-    }
-    if (browser === 'firefox') {
-        num = $d.getFirefoxVersion();
-    }
-    if (browser === 'ie') {
-        num = $d.getIeVersion();
-    }
-    return num;
-};
-
-/**
  * Download Url.
  *
  * @param {String} url
@@ -915,26 +637,6 @@ $d.downloadUrl = function (url) {
     $('<iframe>', {
         src: url
     }).hide().appendTo('body').remove();
-};
-
-/**
- * Download File.
- *
- * @param {String} key
- */
-$d.downloadFile = function (key) {
-    var url = 'file.php?download=1&key=' + key;
-    window.location.href = url;
-};
-
-/**
- * Download and try to open a file.
- *
- * @param {String} key
- */
-$d.openFile = function (key) {
-    var url = 'file.php?download=0&key=' + key;
-    window.location.href = url;
 };
 
 /**
@@ -1428,19 +1130,6 @@ $d.confirm = function (config, callback) {
     return $(wnd).modal(config.modal);
 };
 
-$d.showLoad = function () {
-    $d.hideLoad();
-    var html = '<div class="d-overlay"></div><div id="d_csspinner">';
-    html += '<div class="csspinner no-overlay traditional"></div></div>';
-    $('body').append(html);
-};
-
-$d.hideLoad = function () {
-    $('#d_csspinner').remove();
-    $('.d-overlay').remove();
-    $('.csspinner').remove();
-};
-
 /**
  * Returns all form elements as object
  * inspired by jquery.formparams.js
@@ -1853,171 +1542,4 @@ $d.validateField = function (form, fieldName, regex) {
         result = false;
     }
     return result;
-};
-
-/**
- * Cookie settings
- */
-$d.cfg.cookie = {};
-$d.cfg.cookie.expires = 1; // default 1 day
-$d.cfg.cookie.path = '';
-$d.cfg.cookie.domain = '';
-$d.cfg.cookie.secure = false;
-$d.cfg.cookie.raw = false;
-
-/**
- * Set cookie value
- * @param {String} key
- * @param {*} value
- * @param {Object} options
- */
-$d.setCookie = function (key, value, options) {
-
-    options = $.extend({}, options);
-
-    options.expires = gv(options, 'expires', $d.cfg.cookie.expires);
-
-    if (typeof options.expires === 'number') {
-        var days = options.expires;
-        var t = options.expires = new Date();
-        t.setDate(t.getDate() + days);
-    }
-
-    options.path = gv(options, 'path', $d.cfg.cookie.path);
-    options.domain = gv(options, 'domain', $d.cfg.cookie.domain);
-    options.secure = gv(options, 'secure', $d.cfg.cookie.secure);
-    options.raw = gv(options, 'raw', $d.cfg.cookie.raw);
-    value = String(value);
-
-    var cookie = [
-        encodeURIComponent(key), '=', options.raw ? value : encodeURIComponent(value), options.expires ? '; expires=' + options.expires.toUTCString() : '',
-        options.path ? '; path=' + options.path : '', options.domain ? '; domain=' + options.domain : '', options.secure ? '; secure' : ''].join('');
-
-    document.cookie = cookie;
-};
-
-/**
- * Get cookie value.
- *
- * @param {String} key
- * @param {*} defaultValue
- * @param {Object} options
- * @returns {*}
- */
-$d.getCookie = function (key, defaultValue, options) {
-    options = options || {};
-    var decode = options.raw ?
-        function (s) {
-            return s;
-        } : decodeURIComponent;
-
-    var pairs = document.cookie.split('; ');
-    for (var i = 0, pair; pair = pairs[i] && pairs[i].split('='); i++) {
-        // IE saves cookies with empty string as "c; ", e.g. without "=" as
-        // opposed to EOMB, thus pair[1] may be undefined
-        if (decode(pair[0]) === key) {
-            return decode(pair[1] || '');
-        }
-    }
-    return defaultValue;
-};
-
-/**
- * Delete cookie
- *
- * @param {String} key
- */
-$d.deleteCookie = function (key) {
-    $d.setCookie(key, '', {
-        expires: -1
-    });
-};
-
-/**
- * JavaScript and CSS loader.
- *
- * @param {Array} array
- * @param {callback} callback
- */
-$d.loadElements = function (array, callback) {
-    var loader = function (element, handler) {
-        var el = document.createElement(element.tag);
-
-        for (var attr in element.attr) {
-            el.setAttribute(attr, element.attr[attr]);
-        }
-        for (var prob in element.prob) {
-            el[prob] = element.prob[prob];
-        }
-
-        // callback for external scripts
-        var extern = false;
-        if ('src' in element.attr) {
-            extern = true;
-        }
-        if (extern) {
-            if (el.addEventListener) {
-                el.addEventListener('load', handler, false);
-            } else if (el.readyState) {
-                el.onreadystatechange = handler;
-            }
-        }
-        var head = document.getElementsByTagName("head")[0];
-        (head || document.body).appendChild(el);
-
-        if (!extern) {
-            handler && handler();
-        }
-    };
-
-    (function () {
-        if (array.length !== 0) {
-            loader(array.shift(), arguments.callee);
-        } else {
-            callback && callback();
-        }
-    })();
-};
-
-/**
- * Show notify on screen.
- *
- * @param {Object} options
- *
- * Variable name    Type    Posible values    Default
- *
- * type    String    success, error, warning, info    default
- * msg    String    Message
- * position    String    left, center, right, bottom    center
- * width    Integer-String    Number > 0, 'all'    400
- * height    Integer    Number between 0 and 100    60
- * autohide    Boolean    true, false    true
- * opacity    Float    From 0 to 1    1
- * multiline    Boolean    true, false    false
- * fade    Boolean    true, false    false
- * bgcolor    String    HEX color    #444
- * color    String    HEX color    #EEE
- * timeout    Integer    Miliseconds    5000
- * zindex    Integer    The z-index of the notification    null (ignored)
- * offset    Integer    The offset in pixels from the edge of the screen    0
- *
- * @returns {undefined}
- *
- * @link https://github.com/naoxink/notifIt
- *
- * <code>
- * $d.notify({
- *    msg: "<b>Ok</b> Saved succesfully!",
- *    type: "success",
- *    position: "center"
- * });
- * </code>
- */
-$d.notify = function (options) {
-    options = $.extend({
-        position: 'center',
-        multiline: true,
-        zindex: 9999999
-    }, options);
-    return notif(options);
 };

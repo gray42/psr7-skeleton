@@ -6,7 +6,7 @@ $.fn.homeIndex = function () {
     };
 
     this.fetchData = function () {
-        $d.showLoad();
+        Swal.showLoading()
 
         const params = {
             username: "max",
@@ -14,12 +14,11 @@ $.fn.homeIndex = function () {
         };
 
         ajax.post($d.getBaseUrl('home/load'), params).done(function (data) {
-            $d.hideLoad();
+            Swal.hideLoading();
 
-            $d.notify({
-                msg: '<b>Ok</b> ' + data.message,
+            Notify.fire({
                 type: 'success',
-                position: 'center'
+                title: data.message,
             });
 
             // render template
@@ -27,7 +26,7 @@ $.fn.homeIndex = function () {
             $this.html(html);
 
         }).fail(function (xhr) {
-            $d.hideLoad();
+            Swal.hideLoading();
             ajax.handleError(xhr);
         });
     };

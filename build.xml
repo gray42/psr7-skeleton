@@ -252,6 +252,10 @@
         <copy file="${node_modules_dir}/datatables.net-bs4/js/dataTables.bootstrap4.js" todir="${public_dir}/js" overwrite="true"/>
         <copy file="${node_modules_dir}/datatables.net-bs4/js/dataTables.bootstrap4.min.js" todir="${public_dir}/js" overwrite="true"/>
 
+        <copy todir="${public_dir}/assets/sweetalert2" overwrite="true">
+            <fileset dir="${node_modules_dir}/sweetalert2/dist"/>
+        </copy>
+
         <delete dir="${node_modules_dir}"/>
     </target>
 

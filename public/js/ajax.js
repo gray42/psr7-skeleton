@@ -69,8 +69,11 @@ ajax.handleError = function (xhr) {
 
     message = message || __('Server error');
 
-    $d.alert ? $d.hideLoad(): null;
-    $d.alert ? $d.alert(message) : alert(message);
+    Swal.hideLoading();
+    Swal.fire({
+        type: 'error',
+        text: message
+    });
 
     return true;
 };
