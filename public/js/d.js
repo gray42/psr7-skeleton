@@ -15,6 +15,7 @@ function isset(v) {
     if (typeof v === 'undefined' || v === null) {
         return false;
     }
+
     return true;
 }
 
@@ -37,6 +38,7 @@ function empty(v) {
         }
         return true;
     }
+
     return false;
 }
 
@@ -75,6 +77,7 @@ function gv(obj, key, defaultValue) {
             return defaultValue;
         }
     }
+
     return obj;
 }
 
@@ -98,6 +101,7 @@ function gs(o) {
     if (!isset(o)) {
         return '';
     }
+
     return o.toString();
 }
 
@@ -156,6 +160,7 @@ function sprintf() {
             return match;
         }
     });
+
     return result;
 }
 
@@ -191,6 +196,7 @@ $d.fn = {};
  */
 $d.map = function (obj, f) {
     var result = {};
+
     for (var k in obj) {
         if ({}.hasOwnProperty.call(obj, k)) {
             if (typeof obj[k] === 'object') {
@@ -200,6 +206,7 @@ $d.map = function (obj, f) {
             }
         }
     }
+
     return result;
 };
 
@@ -213,6 +220,7 @@ $d.isNumeric = function (num) {
     if (!isset(num)) {
         return false;
     }
+
     return /^(\-)?([0-9]+|[0-9]+\.[0-9]+)$/.test(num);
 };
 
@@ -233,6 +241,7 @@ $d.isDate = function (str) {
     }
     var d = Date.parse(match[3] + '-' + match[2] + '-' + match[1]);
     var result = (typeof d === 'number' && !isNaN(d));
+
     return result;
 };
 
@@ -246,20 +255,22 @@ $d.isEmail = function (email) {
     if (!isset(email)) {
         return false;
     }
+
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     return re.test(email);
 };
 
 /**
  * Escape URI parameters
  *
- * @param {String} string
+ * @param {String} str The string
  * @return {String}
  */
 $d.encodeUrl = function (str) {
     str = (str + '').toString();
-    str = encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A').replace(/%20/g, '+');
-    return str;
+
+    return encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A').replace(/%20/g, '+');
 };
 
 /**
@@ -269,8 +280,7 @@ $d.encodeUrl = function (str) {
  * @returns {String}
  */
 $d.decodeUrl = function (s) {
-    s = decodeURIComponent((s + '').replace(/\+/g, '%20'));
-    return s;
+    return decodeURIComponent((s + '').replace(/\+/g, '%20'));
 };
 
 /**
@@ -283,16 +293,17 @@ $d.encodeHtml = function (str) {
     if (!isset(str)) {
         return '';
     }
-    var map = {
+    let map = {
         '&': '&amp;',
         '<': '&lt;',
         '>': '&gt;',
         '"': '&quot;',
         "'": '&#039;'
     };
-    var result = str.toString().replace(/[&<>"']/g, function (m) {
+    let result = str.toString().replace(/[&<>"']/g, function (m) {
         return map[m];
     });
+
     return result;
 };
 
@@ -306,21 +317,8 @@ $d.removeHtml = function (s) {
     if (!isset(s)) {
         return '';
     }
+
     return s.toString().replace(/<[^>]*>/g, '');
-};
-
-/**
- * Return UUID
- *
- * @returns {String}
- */
-$d.uuid = function () {
-    function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    }
-
-    var str = s4() + '' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-    return str;
 };
 
 /**
@@ -338,6 +336,7 @@ $d.interpolate = function (str, replacePairs) {
             str = str.replace(re, replacePairs[key]);
         }
     }
+
     return str;
 };
 
@@ -355,6 +354,7 @@ $d.padLeft = function (str, length, char) {
     while (str.length < length) {
         str = char + str;
     }
+
     return str;
 };
 
@@ -374,8 +374,8 @@ $d.cfg.uniqueid = Math.random() * 0x80000000 | 0;
  */
 $d.createId = function (prefix) {
     prefix = prefix || '';
-    var result = prefix + $d.cfg.uniqueid++;
-    return result;
+
+    return prefix + $d.cfg.uniqueid++;
 };
 
 /**
@@ -423,6 +423,7 @@ $d.getBaseUrl = function (path) {
         return path;
     }
     url = baseHref + path;
+
     return url;
 };
 
@@ -438,6 +439,7 @@ $d.urlParams = function () {
     query = $d.map(query, function (k, v) {
         return $d.decodeUrl(v);
     });
+
     return query;
 };
 
@@ -452,6 +454,7 @@ $d.urlParam = function (name) {
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
     var results = regex.exec(window.location.search);
     results = results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+
     return results;
 };
 
@@ -625,18 +628,8 @@ $d.getBrowser = function () {
     if (is_opera) {
         return 'opera';
     }
-    return '';
-};
 
-/**
- * Download Url.
- *
- * @param {String} url
- */
-$d.downloadUrl = function (url) {
-    $('<iframe>', {
-        src: url
-    }).hide().appendTo('body').remove();
+    return '';
 };
 
 /**
@@ -1142,24 +1135,6 @@ $d.getForm = function (id) {
 };
 
 /**
- * Returns selected form elements text as an object of names and values.
- *
- * @param {Object} selector
- * @returns {Object}
- */
-$d.getFormText = function (selector) {
-    var arr = $(selector).find('select option:selected').map(function () {
-        var ret = {
-            name: $(this).parent().attr('name'),
-            value: $(this).text()
-        };
-        return ret;
-    }).get();
-    var obj = $d.serializeObject(arr);
-    return obj;
-};
-
-/**
  * Encode a array of form elements as an object of names and values.
  *
  * @param {Array} arr
@@ -1176,7 +1151,7 @@ $d.serializeObject = function (arr) {
             value = Boolean(value);
         }
 
-        //make an array of values
+        // make an array of values
         var parts = key.match(keyBreaker);
         var lastPart;
 
@@ -1190,7 +1165,7 @@ $d.serializeObject = function (arr) {
         }
         lastPart = parts[parts.length - 1];
 
-        //now we are on the last part, set the value
+        // now we are on the last part, set the value
         if (lastPart in current) {
             if (!$.isArray(current[lastPart])) {
                 current[lastPart] = current[lastPart] === undefined ? [] : [current[lastPart]];
@@ -1200,33 +1175,28 @@ $d.serializeObject = function (arr) {
             current[lastPart] = value;
         }
     });
+
     return o;
 };
 
 /**
- * Get el from field name (data[name] or data[name][sub]) in form.
+ * Get el from field name (data[name] or data[name][sub]) within a form.
  *
  * @param form jquery Form element (or text selector)
  * @param fieldName name of field to look for
- * @returns objEl jquery element object
+ * @returns {element} jquery element object
  */
 $d.getField = function (form, fieldName) {
-    var selector = "input[name=data{s}],select[name=data{s}],textarea[name=data{s}]";
+    let selector = "input[name=data{s}],select[name=data{s}],textarea[name=data{s}]";
     if (fieldName.indexOf('[') === -1) {
         fieldName = '[' + fieldName + ']';
     }
+
     selector = $d.interpolate(selector, {
         s: $d.jq(fieldName)
     });
-    var result = $(form).find(selector);
-    return result;
-};
 
-$d.getFieldName = function (el) {
-    var name = $(el).attr('name');
-    var fieldName = '';
-    fieldName = name.replace(/^(data\[)(.*)(\])$/g, '$2');
-    return fieldName;
+    return $(form).find(selector);
 };
 
 /**
@@ -1287,36 +1257,12 @@ $d.loadForm = function (options) {
 };
 
 /**
- * Load table elements with data values.
- *
- * @param {String|Object} selector
- * @param {Object} data
- * @returns {jQuery}
- */
-$d.loadData = function (selector, data) {
-    var el = $(selector);
-    if (empty(data)) {
-        return null;
-    }
-    for (var key in data) {
-        // select element by attribute (data-name)
-        var field = $(el).find('[data-name="' + $d.jq(key) + '"]');
-        if (!field.length) {
-            continue;
-        }
-        $(field).html(gh(data[key]));
-    }
-    return el;
-};
-
-/**
  * Fill drop-down
  *
  * @param {Object} dropdown
  * @returns {unresolved}
  */
 $d.loadDropdown = function (dropdown) {
-
     // overwrite default settings
     dropdown = $.extend({
             control: null,
@@ -1500,7 +1446,7 @@ $d.showValidation = function (form, errors) {
  */
 $d.validateRequiredFields = function (form) {
     var boolValid = true;
-    $(form).find("[required]").each(function () {
+    $(form).find("[required='required']").each(function () {
         var elField = $(this);
         var v = '';
         var type = elField[0].type;
