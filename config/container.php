@@ -78,7 +78,7 @@ $container->share(CsrfMiddleware::class, static function (Container $container) 
     $psr17Factory = $container->get(Psr17Factory::class);
     $session = $container->get(SessionInterface::class);
 
-    // Workaround, until thephpleague/route offers support for lazy loading middleware #218
+    // The CSRF middleware requires a valid session id
     if (!$session->isStarted()) {
         $session->start();
     }

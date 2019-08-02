@@ -19,8 +19,8 @@ $router->group('/users', static function (RouteGroup $group): void {
     $group->get('/login', \App\Action\UserLoginIndexAction::class)->setName('login');
     $group->get('/logout', \App\Action\UserLogoutAction::class);
 })
-    ->middleware($container->get(SessionMiddleware::class))
-    ->middleware($container->get(CsrfMiddleware::class));
+    ->lazyMiddleware(SessionMiddleware::class)
+    ->lazyMiddleware(CsrfMiddleware::class);
 
 // Routes with authentication
 $router->group('', static function (RouteGroup $group): void {
@@ -37,9 +37,9 @@ $router->group('', static function (RouteGroup $group): void {
     // Json request
     $group->post('/home/load', \App\Action\HomeLoadAction::class);
 })
-    ->middleware($container->get(SessionMiddleware::class))
-    ->middleware($container->get(LanguageMiddleware::class))
-    ->middleware($container->get(AuthenticationMiddleware::class))
-    ->middleware($container->get(CsrfMiddleware::class));
+    ->lazyMiddleware(SessionMiddleware::class)
+    ->lazyMiddleware(LanguageMiddleware::class)
+    ->lazyMiddleware(AuthenticationMiddleware::class)
+    ->lazyMiddleware(CsrfMiddleware::class);
 
 return $router;
