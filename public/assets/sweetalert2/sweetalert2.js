@@ -1,5 +1,5 @@
 /*!
-* sweetalert2 v8.15.0
+* sweetalert2 v8.16.1
 * Released under the MIT License.
 */
 (function (global, factory) {
@@ -487,7 +487,9 @@ var getFooter = function getFooter() {
 };
 var getCloseButton = function getCloseButton() {
   return elementByClass(swalClasses.close);
-};
+}; // https://github.com/jkup/focusable/blob/master/index.js
+
+var focusable = "\n  a[href],\n  area[href],\n  input:not([disabled]),\n  select:not([disabled]),\n  textarea:not([disabled]),\n  button:not([disabled]),\n  iframe,\n  object,\n  embed,\n  [tabindex=\"0\"],\n  [contenteditable],\n  audio[controls],\n  video[controls],\n  summary\n";
 var getFocusableElements = function getFocusableElements() {
   var focusableElementsWithTabindex = toArray(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')) // sort according to tabindex
   .sort(function (a, b) {
@@ -501,9 +503,8 @@ var getFocusableElements = function getFocusableElements() {
     }
 
     return 0;
-  }); // https://github.com/jkup/focusable/blob/master/index.js
-
-  var otherFocusableElements = toArray(getPopup().querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls]')).filter(function (el) {
+  });
+  var otherFocusableElements = toArray(getPopup().querySelectorAll(focusable)).filter(function (el) {
     return el.getAttribute('tabindex') !== '-1';
   });
   return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(function (el) {
@@ -690,7 +691,7 @@ var renderActions = function renderActions(instance, params) {
   var cancelButton = getCancelButton(); // Actions (buttons) wrapper
 
   if (!params.showConfirmButton && !params.showCancelButton) {
-    return hide(actions);
+    hide(actions);
   } // Custom class
 
 
@@ -963,6 +964,28 @@ renderInputType.textarea = function (params) {
   var textarea = getChildByClass(getContent(), swalClasses.textarea);
   textarea.value = params.inputValue;
   setInputPlaceholder(textarea, params);
+
+  if ('MutationObserver' in window) {
+    // #1699
+    var initialPopupWidth = parseInt(window.getComputedStyle(getPopup()).width);
+    var popupPadding = parseInt(window.getComputedStyle(getPopup()).paddingLeft) + parseInt(window.getComputedStyle(getPopup()).paddingRight);
+
+    var outputsize = function outputsize() {
+      var contentWidth = textarea.offsetWidth + popupPadding;
+
+      if (contentWidth > initialPopupWidth) {
+        getPopup().style.width = contentWidth + 'px';
+      } else {
+        getPopup().style.width = null;
+      }
+    };
+
+    new MutationObserver(outputsize).observe(textarea, {
+      attributes: true,
+      attributeFilter: ['style']
+    });
+  }
+
   return textarea;
 };
 
@@ -2863,7 +2886,7 @@ Object.keys(instanceMethods).forEach(function (key) {
   };
 });
 SweetAlert.DismissReason = DismissReason;
-SweetAlert.version = '8.15.0';
+SweetAlert.version = '8.16.1';
 
 var Swal = SweetAlert;
 Swal["default"] = Swal;
