@@ -1,14 +1,10 @@
 <?php
 
 use App\Domain\User\Auth;
-use App\Domain\User\AuthRepository;
 use App\Domain\User\Locale;
 use App\Factory\LoggerFactory;
 use App\Http\RouterUrl;
-use App\Middleware\AuthenticationMiddleware;
-use App\Middleware\CorsMiddleware;
 use App\Middleware\ExceptionMiddleware;
-use App\Middleware\LanguageMiddleware;
 use App\Middleware\NotFoundMiddleware;
 use App\Middleware\SessionMiddleware;
 use App\Repository\QueryFactory;
