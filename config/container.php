@@ -188,19 +188,8 @@ $container->share(SessionInterface::class, static function (Container $container
     return $session;
 })->addArgument($container);
 
-$container->share(Auth::class, static function (Container $container) {
-    return new Auth($container->get(SessionInterface::class), $container->get(AuthRepository::class));
-})->addArgument($container);
-
-$container->share(AuthRepository::class, static function (Container $container) {
-    return new AuthRepository($container->get(QueryFactory::class));
-})->addArgument($container);
-
 $container->share(Connection::class, static function (Container $container) {
-    $settings = $container->get('settings');
-    $driver = new Mysql($settings['db']);
-
-    return new Connection(['driver' => $driver]);
+    return new Connection(['driver' => new Mysql($container->get('settings')['db'])]);
 })->addArgument($container);
 
 $container->share(PDO::class, static function (Container $container) {
@@ -299,22 +288,6 @@ $container->share(ExceptionMiddleware::class, static function (Container $contai
         $container->get(ResponseFactoryInterface::class),
         $container->get(StreamFactoryInterface::class),
         true // verbose
-    );
-})->addArgument($container);
-
-$container->share(CorsMiddleware::class, static function (Container $container) {
-    return new CorsMiddleware();
-})->addArgument($container);
-
-$container->share(LanguageMiddleware::class, static function (Container $container) {
-    return new LanguageMiddleware($container->get(Locale::class));
-})->addArgument($container);
-
-$container->share(AuthenticationMiddleware::class, static function (Container $container) {
-    return new AuthenticationMiddleware(
-        $container->get(ResponseFactoryInterface::class),
-        $container->get(RouterUrl::class),
-        $container->get(Auth::class)
     );
 })->addArgument($container);
 
