@@ -9,14 +9,14 @@ return (static function () {
     /** @var ContainerInterface $container */
     $container = require __DIR__ . '/container.php';
 
-    // Register middleware
-    require __DIR__ . '/middleware.php';
-
     // Register routes
-    require __DIR__ . '/routes.php';
+    (require __DIR__ . '/routes.php')($container);
 
-    // Set translator instance
-    __($container->get(Translator::class));
+    // Register middleware
+    (require __DIR__ . '/middleware.php')($container);
+
+    // Init translator instance
+    $container->get(Translator::class);
 
     return $container;
 })();
