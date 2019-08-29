@@ -52,8 +52,7 @@ $container->share(ContainerInterface::class, static function (Container $contain
 $container->share(Router::class, function (Container $container) {
     $router = new Router();
 
-    $router->setStrategy((new class() extends ApplicationStrategy
-    {
+    $router->setStrategy((new class() extends ApplicationStrategy {
         public function getNotFoundDecorator(NotFoundException $exception): MiddlewareInterface
         {
             return $this->getContainer()->get(NotFoundMiddleware::class);
