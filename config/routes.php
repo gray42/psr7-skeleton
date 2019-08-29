@@ -13,8 +13,6 @@ use Psr\Container\ContainerInterface;
 return static function (ContainerInterface $container) {
     $router = $container->get(Router::class);
 
-    $router->get('/', \App\Action\HomeIndexAction::class)->setName('root');
-
     $router->post('/ping', \App\Action\HomePingAction::class);
 
     // Login, no auth check for this actions required
