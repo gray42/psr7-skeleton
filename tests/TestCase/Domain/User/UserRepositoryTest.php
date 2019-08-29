@@ -48,7 +48,7 @@ class UserRepositoryTest extends TestCase
         $repository = $this->createRepository();
         $actual = $repository->findAll();
 
-        $this->assertNotEmpty($actual);
+        static::assertNotEmpty($actual);
     }
 
     /**
@@ -66,6 +66,6 @@ class UserRepositoryTest extends TestCase
         $fixture = new UserFixture();
         $expected = UserData::fromArray($fixture->records[0]);
 
-        $this->assertEquals($expected, $actual);
+        static::assertEquals($expected, $actual);
     }
 }

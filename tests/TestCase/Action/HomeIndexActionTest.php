@@ -25,8 +25,8 @@ class HomeIndexActionTest extends TestCase
         $response = $this->request($request);
 
         // Assert redirect
-        $this->assertSame(302, $response->getStatusCode());
-        $this->assertSame('/users/login', $response->getHeaderLine('Location'));
+        static::assertSame(302, $response->getStatusCode());
+        static::assertSame('/users/login', $response->getHeaderLine('Location'));
     }
 
     /**
@@ -39,7 +39,7 @@ class HomeIndexActionTest extends TestCase
         $request = $this->createServerRequest('GET', '/not-existing-page');
         $response = $this->request($request);
 
-        $this->assertContains('<h1>Page Not Found</h1>', (string)$response->getBody());
-        $this->assertSame(404, $response->getStatusCode());
+        static::assertContains('<h1>Page Not Found</h1>', (string)$response->getBody());
+        static::assertSame(404, $response->getStatusCode());
     }
 }

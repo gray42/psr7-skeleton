@@ -25,8 +25,8 @@ class HomePingActionTest extends TestCase
         $request = $this->withJson($request, ['username' => 'user', 'password' => 'user']);
         $response = $this->request($request);
 
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertSame('application/json', $response->getHeaderLine('Content-Type'));
-        $this->assertSame('{"username":"user","password":"user"}', $response->getBody()->__toString());
+        static::assertSame(200, $response->getStatusCode());
+        static::assertSame('application/json', $response->getHeaderLine('Content-Type'));
+        static::assertSame('{"username":"user","password":"user"}', $response->getBody()->__toString());
     }
 }

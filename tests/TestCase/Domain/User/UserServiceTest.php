@@ -46,7 +46,7 @@ class UserServiceTest extends TestCase
 
         $actual = $service->findAllUsers();
 
-        $this->assertEquals([new UserData()], $actual);
+        static::assertEquals([new UserData()], $actual);
     }
 
     /**
@@ -66,6 +66,6 @@ class UserServiceTest extends TestCase
         $this->mockMethod([UserRepository::class, 'getUserById'])->willReturn($expected);
 
         $actual = $service->getUserById(1);
-        $this->assertEquals($expected, $actual);
+        static::assertEquals($expected, $actual);
     }
 }
