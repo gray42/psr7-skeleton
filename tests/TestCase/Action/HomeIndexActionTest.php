@@ -21,7 +21,7 @@ class HomeIndexActionTest extends TestCase
      */
     public function testIndexAction(): void
     {
-        $request = $this->createServerRequest('GET', '/');
+        $request = $this->createRequest('GET', '/');
         $response = $this->request($request);
 
         // Assert redirect
@@ -36,7 +36,7 @@ class HomeIndexActionTest extends TestCase
      */
     public function testPageNotFound(): void
     {
-        $request = $this->createServerRequest('GET', '/not-existing-page');
+        $request = $this->createRequest('GET', '/not-existing-page');
         $response = $this->request($request);
 
         static::assertContains('<h1>Page Not Found</h1>', (string)$response->getBody());

@@ -37,7 +37,7 @@ trait HttpTestTrait
      *
      * @return ServerRequestInterface
      */
-    protected function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
+    protected function createRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {
         return $this->getContainer()->get(Psr17Factory::class)->createServerRequest($method, $uri, $serverParams);
     }

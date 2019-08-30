@@ -21,7 +21,7 @@ class HomePingActionTest extends TestCase
      */
     public function testPing(): void
     {
-        $request = $this->createServerRequest('POST', '/ping');
+        $request = $this->createRequest('POST', '/ping');
         $request = $this->withJson($request, ['username' => 'user', 'password' => 'user']);
         $response = $this->request($request);
 
