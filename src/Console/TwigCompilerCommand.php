@@ -13,7 +13,7 @@ use Twig\Environment as Twig;
 /**
  * Command.
  */
-final class ParseTextCommand extends Command
+final class TwigCompilerCommand extends Command
 {
     /**
      * @var ContainerInterface
@@ -46,8 +46,8 @@ final class ParseTextCommand extends Command
     {
         parent::configure();
 
-        $this->setName('parse-text');
-        $this->setDescription('Parse text');
+        $this->setName('compile-twig');
+        $this->setDescription('Compile Twig templates');
     }
 
     /**
