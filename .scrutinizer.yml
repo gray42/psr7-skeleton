@@ -31,8 +31,8 @@ build:
             before:
                  - composer self-update
                  - composer update --no-interaction --prefer-dist --no-progress
-                 - php
-                 - ls
+                 - php bin/test.php
+                 - php bin/test2.php
                  - php bin/cli.php example
                  - php bin/cli.php install --environment ci
     tests:
