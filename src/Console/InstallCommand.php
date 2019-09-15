@@ -62,13 +62,19 @@ final class InstallCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $output->writeln('Execute');
+
         $io = new SymfonyStyle($input, $output);
 
         $settings = $this->container->get('settings');
         $root = $settings['root'];
         $configPath = $root . '/config';
+        $output->writeln($configPath);
 
+        $output->writeln('createEnvFile');
         $this->createEnvFile($output, $configPath);
+
+        $output->writeln('generateRandomSecret');
         $this->generateRandomSecret($output, $configPath);
 
         $env = '';
@@ -81,6 +87,7 @@ final class InstallCommand extends Command
         }
 
         try {
+            $output->writeln('createNewDatabase');
             return $this->createNewDatabase($io, $output, $configPath, $root, $env);
         } catch (Exception $exception) {
             $output->writeln(sprintf('<error>Unknown error: %s</error> ', $exception->getMessage()));
@@ -144,6 +151,8 @@ final class InstallCommand extends Command
         string $root,
         ?string $env = null
     ): int {
+        $output->writeln($env);
+
         if ($env === 'ci') {
             $mySqlHost = '127.0.0.1';
             $mySqlDatabase = 'test';

@@ -12,7 +12,7 @@ $commands = $container->get('settings')['commands'];
 $application = new \Symfony\Component\Console\Application();
 
 foreach ($commands as $class) {
-    //$application->add($container->get($class));
+    $application->add($container->get($class));
 }
 
 $application->run();
