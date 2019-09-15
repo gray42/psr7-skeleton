@@ -118,5 +118,5 @@ $settings['commands'] = [
     \App\Console\InstallCommand::class,
     \App\Console\ResetDatabaseCommand::class,
     \App\Console\TwigCompilerCommand::class,
-    \App\Console\SchemaSqlCommand::class,
+    //\App\Console\SchemaSqlCommand::class,
 ];
