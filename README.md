@@ -9,6 +9,8 @@ A very basic PSR-7 / PSR-15 application for PHP.
 [![Quality Score](https://img.shields.io/scrutinizer/quality/g/odan/psr7-skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/odan/psr7-skeleton/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/odan/psr7-skeleton.svg?style=flat-square)](https://packagist.org/packages/odan/psr7-skeleton/stats)
 
+Please have a look at my new skeleton project for Slim 4: [odan/slim4-skeleton](https://github.com/odan/slim4-skeleton)
+
 ## Requirements
 
 * PHP 7.2+
