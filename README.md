@@ -61,7 +61,7 @@ This project comes configured with:
 * Assets (js, css) minification and caching
 * Twig translations
 
-**Continous integration:**
+**Continuous integration:**
 
 * Tested on Travis CI and Scrutinizer CI
 * Unit tests
