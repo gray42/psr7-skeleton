@@ -155,7 +155,7 @@ $container->share(LoggerInterface::class, static function (Container $container)
     $settings = $container->get('settings')['logger'];
     $logger = new Logger($settings['name']);
 
-    $level = isset($settings['level']) ?: Logger::ERROR;
+    $level = $settings['level'] ?? Logger::ERROR;
     $filename = sprintf('%s/%s', $settings['path'], $settings['filename']);
 
     $handler = new RotatingFileHandler($filename, 0, $level, true, 0775);
